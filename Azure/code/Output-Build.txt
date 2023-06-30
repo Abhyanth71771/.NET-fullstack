@@ -1,0 +1,6 @@
+﻿10:20:46:126	Build started...
+10:20:46:395	1>------ Build started: Project: WebApplication1, Configuration: Debug Any CPU ------
+10:20:46:800	1>Skipping analyzers to speed up the build. You can execute 'Build' or 'Rebuild' command to run analyzers.
+10:20:53:987	1>WebApplication1 -> C:\Users\AbhyanthP\source\repos\WebApplication1\WebApplication1\bin\Debug\net6.0\WebApplication1.dll
+10:20:54:065	========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
+10:20:54:065	========== Elapsed 00:08.036 ==========

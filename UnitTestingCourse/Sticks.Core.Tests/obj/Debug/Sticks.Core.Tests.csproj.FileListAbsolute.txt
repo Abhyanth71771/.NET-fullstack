@@ -1,0 +1,20 @@
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Sticks.Core.Tests\bin\Debug\Sticks.Core.Tests.dll
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Sticks.Core.Tests\bin\Debug\Sticks.Core.Tests.pdb
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Sticks.Core.Tests\bin\Debug\nunit.framework.dll
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Sticks.Core.Tests\bin\Debug\nunit.framework.xml
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Sticks.Core.Tests\obj\Debug\Sticks.Core.Tests.csprojResolveAssemblyReference.cache
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Sticks.Core.Tests\obj\Debug\Sticks.Core.Tests.dll
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Sticks.Core.Tests\obj\Debug\Sticks.Core.Tests.pdb
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Sticks.Core.Tests\bin\Debug\Sticks.Core.dll
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Sticks.Core.Tests\bin\Debug\Sticks.Core.pdb
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Sticks.Core.Tests\bin\Debug\Sticks.Core.Tests.dll
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Sticks.Core.Tests\bin\Debug\Sticks.Core.Tests.pdb
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Sticks.Core.Tests\bin\Debug\nunit.framework.dll
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Sticks.Core.Tests\bin\Debug\Sticks.Core.dll
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Sticks.Core.Tests\bin\Debug\Sticks.Core.pdb
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Sticks.Core.Tests\bin\Debug\nunit.framework.xml
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Sticks.Core.Tests\obj\Debug\Sticks.Core.Tests.csproj.AssemblyReference.cache
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Sticks.Core.Tests\obj\Debug\Sticks.Core.Tests.csproj.CoreCompileInputs.cache
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Sticks.Core.Tests\obj\Debug\Sticks.Core.Tests.csproj.CopyComplete
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Sticks.Core.Tests\obj\Debug\Sticks.Core.Tests.dll
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Sticks.Core.Tests\obj\Debug\Sticks.Core.Tests.pdb

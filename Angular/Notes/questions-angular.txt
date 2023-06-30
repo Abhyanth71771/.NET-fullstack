@@ -1,0 +1,184 @@
+1. Which of the following is used for one-way data binding?
+A) ngModel
+B) [ ] Square Brackets
+C) ( ) Parentheses
+D) None of the above
+B
+
+
+2. If a feature module is lazy loaded, it need not be in the "imports" section of the root module. True or False?
+A) True
+B) False
+A
+
+3. An Angular service provided in the root injector is also available for each lazy loaded modules. 
+True or False?
+A) True
+B) False
+A
+
+4. Which of the following is true about pipes in Angular? (Choose all that apply)
+A) A custom pipe is impure by default
+B) A custom pipe is pure by default
+C) All built in pipes are pure  by default
+D) For a pure pipe, the transform() method is called each time the input value changes
+E) The transform() method can take any number of arguments after the first argument
+B, C, E
+
+5. You have created a component named LoginComponent. You want the current time to be 
+    displayed in the browser’s title bar when the component is shown. You write the following 
+    code inside the template of the component:
+	{{ window.title = `Current Time is: ${Date()}` }}
+
+When the component is displayed, the time does not appear in the title bar of the browser. 
+What could be the problem?
+A) The Date() constructor does not return the time. Use methods to get the current time
+B) It’s not window.title, it’s document.window.title
+C) A template cannot use an arrow function syntax. Use the function keyword instead
+D) Angular Template context does not allow this kind of DOM usage
+E) Text interpolation syntax is incorrect
+F) Use property binding since title is a property of the window object
+G) Problem seems to be something else
+H) It’s window.document.title
+
+
+6. Which of the following statements is true? (Choose all that apply)
+A) Each module which is lazy loaded, shares the root module’s injector as long as it is in existence
+B) Each lazy loaded module has its own route configuration 
+C) Routes created using Angular can be bookmarked
+D) To add a form-level validation in Reactive Forms, the custom validator must be specified as a string using the FormGroup’s validator property and not as a class
+E) All statements A, B, C and D are true
+F) None of the statements A, B, C, D and E are true
+
+
+7. Which of the following methods allows you to change only selected properties of a FormGroup?
+A) setValue()
+B) setValues([ ])
+C) patchValue()
+D) patchValues([ ])
+E) resetValue()
+F) resetValues([ ])
+
+
+8. During content projection, when using the ng-content directive, which of the following 
+    attributes can be used to display content at a specific location within the component?
+A) slot
+B) select
+C) area
+D) location
+
+
+9. Which of these can be declared in an NgModule? (Choose all that apply)
+A) FormsModule
+B) A custom HTTP Interceptor class
+C) A custom TypeScript model class
+D) A custom pipe
+E) BrowserModule
+F) All of the above A, B, C, D and E can be declared
+
+
+10. You want to create a feature module named "PatientDemographicsModule" with its own 
+      route configuration for lazy loading. Which of the following Angular CLI commands can be 
+      used?
+A) ng g m patientdemographicsmodule –routing
+B) ng generate module patient-demographics-module –routing
+C) ng g m patientdemographicsmodule –routes
+D) ng g m patient-demographics-module –routes
+E) ng g m patientdemographics –routing
+F) ng g m patient-demographics –routing
+G) ng g m patientdemographics –routes
+H) ng g m patient-demographics –routes
+I) C or G or H
+J) None of the above
+
+
+11. Which of these is NOT an attribute directive?
+A) routerLink
+B) ngSwitchDefault
+C) ngSwitch
+D) ngModel
+
+
+12. The AppComponent contains two child components named PatientDemographicsComponent 
+      and PatientVisitsComponent respectively. The routing link to the PatientVisitsComponent is 
+      inside the PatientDemographicsComponent. 
+      Which of the following is the recommended way to create the routing link inside the 
+      PatientDemographics component?
+A) <a routerLink=”/patientvisits”>VISITS</a>
+B) <a routerLink=”/../patientvisits”>VISITS</a>
+C) <a routerLink=”../patientvisits”>VISITS</a>
+D) <a routerLink=”../../patientvisits”>VISITS</a>
+E) B or D
+F) None of the above
+
+
+13. You define the following markup inside the template of a component:
+	<button id=”b1” (click)=”HandleClick()”>Button1</button>
+	<button id=”b2” (click)=”HandleClick()”>Button1</button>
+The HandleClick() event handler must be able to display the entire markup of the button on the 
+browser’s console based on whichever button is clicked. 
+Which of the following correctly configures this?
+A) (click)=”HandleClick(event)
+B) (click)=”HandleClick(event.target.innerHTML)
+C) (click)=”HandleClick($event.target.innerHTML)
+D) (click)=”HandleClick($event)
+E) (click)=”HandleClick(“$event”)
+F) (click)=”HandleClick(“event”)
+
+
+14. You want to generate a form which captures a patient’s personal details. You want to 
+       generate form controls without having to type any HTML explicitly. 
+       Which of the following can be used?
+A) FormControl
+B) FormGroup
+C) FormBuilder
+D) FormControlArray
+E) Form
+
+
+15.Which of the following is an example of Dependency Injection in Angular? (Choose all that apply)
+A) Specifying a service class type as an argument in the component's constructor
+B) Route Guards
+C) Specifying a custom class type as an argument in the component's constructor
+D) All of the above options A, B and C are valid examples
+E) None of the options A, B, C and D are valid examples
+
+
+16. You have reference a CSS class named "c1" in the "index.html" page which specifies the font color as yellow. The root component also has a CSS class named "c1" with specifies the font color as red. The root component and index.html both display some text. What will be the color of the text displayed by the root component?
+A) yellow
+B) red
+C) A runtime error would occur in the root component 
+
+
+17. Which of the following can be used to pass data from one component to another?
+A) @Input()
+B) Routing
+C) An Angular Service
+D) All of the above (A, B and C)
+E) None of the above (A, B, C and D)
+
+
+18. Consider the following code: (assume that the path is valid)
+	<img [src]="/assets/images/logo.jpg" alt="Cannot display image"/>
+What would be the output?
+A) Build time Error
+B) Runtime Error
+C) The image would be displayed
+D) The image would not be displayed, instead the text "Cannot display image" would be displayed
+
+
+19. Consider the following code:
+	<p [innerText]='Hello'>Angular</p>
+What would be the output?
+A) Build time Error
+B) Runtime Error
+C) The text "Hello" would be displayed in the paragraph element
+D) The text "Hello Angular" would be displayed in the paragraph element
+
+
+20. Consider the following code:
+	<p>{{ Math.sqrt(10) }}</p>
+What would be the output?
+A) Build time Error
+B) Runtime Error
+C) The square root of 10 would be displayed

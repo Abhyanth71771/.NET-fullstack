@@ -1,0 +1,451 @@
+Angular Cli:
+	1.Rad(Rapid application devolopment) tools-->generates angular artifacts,builds unit testing,etc
+	2.built with smart coding practices
+	
+Install Angular cli:
+	1`.cmd
+	2.np install -g @angular/cli
+	3.cross check the installation by executing the command: ng version
+
+
+All angular command begin with 'ng' prefix
+
+
+
+AngularJS vs 		 Angular
+
+legacy        		new version
+
+version:1.x   		version started from 2.0
+
+completely based	based on TS
+on js
+					version:2.0,4.0,5,6,7,8,9,10,11,12,13,14.0
+
+google releases a major version every six months and minor version every 3 months and patch versions every 2 weeks
+
+There is major architectural change from angular Js to angular
+
+
+
+Creating an angular application:
+	run the following cmd: ng new<<application name>>
+	do this each time you want a project
+	all the angular dependancies are in the folder named node_modules
+	application source code will be in the src/app folder(the code we create)
+	All the components must be under src/app
+		.component.spec.ts--> used for unit testing(unit testign code) 
+		component.css-->styles of th component
+		.component.ts-->logic and metadata of the completely
+		.component.html-->template/view pf the component
+	
+	Running the application: ng serve starts web app in port 4200  
+	
+	
+	<app-root></app-root> is the html selector of the root component this is generated auomatically
+	anythig inside app root will be ignored and you can only see glimpse of it when you refresh it but 
+	you can add anything before or after app root 	it will get executed but angularwont care about it
+
+
+
+Any component created will be the child of the root component so to display child component its html tage should be put 
+inside the root  component(app.component.html) and not index.html
+		
+	
+	
+Creating Componets
+==================
+1.use the following command to create a new component 
+				ng generate component<<component name>>
+			
+			
+
+
+In anguar each component will have its own styles inside its own css files
+						Angilar uses a technique knows as 'view encapsulation' which prevents clashing
+to add global styls to a angular app reference the styles inside 'styles.css' 
+		styles.css will be in src folder "@import '../node_modules/bootstrap/dist/css/bootstrap.css';"
+	
+		
+
+DAY-2                             DATE:10/14/22
+================================================================================================================================================================
+
+Web pack is a bundling(combing) and minification(reduce size) tool  for js and css files
+
+
+Angular Modules
+===============
+	What?--->An angular module is a logical grouping of components pipes,directives
+	Why?--->Allows lazy loading (Improves Initial page lad time)
+	similar to resourse groups in Azure
+	logical grouping
+	each anguar app has a root module The root module contains the root componet and its the first component to be loaded
+	A root module can have child/feature modules and each feature module can have its own pipes/directives and coponents
+	Having a child coponent is not compusory but thes no logical grouping done
+	all the coponents(ts file) under one root module is converted to one JS file doing this huge files mite take time to load as all the coponents
+	are uder 1 JS file this is Eager loading
+	
+	Now lazy loading is when modules are loaded only when required only the root module is eager loded
+	
+	Why modules:
+			logical grouping
+			each module can be loaded when required and not all at once
+	if and only if there is feature modules we can implement lazy loading
+		We can configure lazy loading
+	
+	
+TS perspective of angular component and modules
+==============================================
+	An angular is a TS class 'decorated' with @Compoent() decorator which makes it a component 
+	
+	An angular module is a TS class decorated with a Ts class decorated with a @NgModule()
+	
+Decorator
+=========
+when we use a component Angular wont understand it because its just a class now when add a @component to it there are some pre-defined 
+styles/selector which angular maps to that particular component
+so adding a decorator will make angular understand that its a component 
+
+==================================================================================================
+@coponent decorator will have 3 props:
+	1.selector --->HTML tag of comp
+	2.template(in-line template)/templateUrl(complex templates use url's) ---->defines the view
+		4.styles: --->css styles
+=====================================================================================================
+@NgModule() props:
+decalrations:contains components that are directly part of the root modules
+providers--->
+bootstrap--->specifies which is the root component of the application 
+	
+
+Angular app bootstraping process"
+================================
+1.Code inside main.ts executes first
+2.The bootStrapModule() methood is called which calls the cons of the AppModule class
+3.The const of the appComponent class is called
+4.The app components's HTML is rendered
+	platformBrowserDynamic-->calls angular in the browser
+	
+	
+==================
+Angular Components
+	A visual enitity which user can intract with
+	Component are supposed to display data(fetching is not the job of the component)
+==================
+
+==================
+Data Binding
+	A technique to tightly associate the model with the view in such a way that when the model changes 
+	its refleced in the view and vice-versa
+	
+	Model is the data the source is not a concern for the .html file
+	
+	TYPES:
+		ONE-WAY---> 1.flow of data is from model(TS code) to View
+		            2.used for read-only cases
+					3.can be achived by using Interpolation{{}}/Using property binding[]
+											  anythig within the curly brace will be executed by angular eg:{{1+1}}
+											  
+											  
+		Event binding:--->Handling Dom events(associating the dom event with handler function)
+								<button(click)='HandlerName()'>Click Me</button>
+									the handler name much be a public function inside the components ts file and inside the component's class
+								<in>put type="text"(change)='handlechange()'/>
+		
+		Two way:---> is a combination of property binding and event binding			[()]
+					
+
+	
+
+Eager loading & lazy loading
+create a component name 'greeeter' 
+			render it from the root component
+			the component must display the following strings in its template
+			The data must contain 3 strings with the values 'hello','welcome'and 'goodbye' respectively
+			
+			display each string inside a div tage using interpolation syntax
+
+
+ng serve --port <<Port number>>
+
+pollyfils.js--->legacy bridge
+
+46:49
+
+===================================================================================================================================================================
+DAY-3 17-10-22
+
+
+
+One way binding
+	Property binding[]=when binding to a dom property
+							eg:ts file=imagepath:string='c:\myimage.jpg'
+							view:
+							 <img[src]='imagepath'>
+							 <a[href]='somelink>click</a>'
+							 
+	
+	prop binding                         vs interpolation
+	<img[src]='imagepath'>					<img src='{{imagepath}}'>
+											interpolation is like a shortcut of propery binding(interpolation is converted to property binding bts )
+
+The view and the ts file is tightly bound so use property bounding to do get element by id and so on
+
+for a button the attribute disabled is by default true and it cannot be	changed to false hence we use property binding to play with the values
+
+===============================================
+TWO WAY BINDING
+											
+	a directive is a custom attribute created i angular which can be applied to html elements to change thier behaviour
+	can be used with all input element		
+					eg:checkbox,radio buttons,etc
+	input type='text' (input)=''fun($event)/[(ngModel)]="variable"
+										$event is used to give a set f properties of that particular event .target.value will give s the value
+	[(ngModel)]="variable"---->when ever user enters any input that vlaue goes inside the variable
+			when ever we are using ngModel we have to import FormsModule and this needs to be imported inside the root module
+			
+			import{FormsModule} from '@angular/forms' and then inside impots type FormsModule
+			ngModelautomatically binds to the type of buttons or input type
+
+Assignment1:create a component       enable or disable <add a checkbox(initially checked)>
+										<button>-->when the check box is unchecked the button must be disabled and 
+										when the check box is checked enable the button
+										
+Assignment2: create about component   enter password
+									<input type password>
+									<empty span>-->if the no of characters in the password feild
+																								is empty display empty
+																								is between 1-3 display weak
+																								is between 4-8 display strong
+																								is between 9-15 display very strong
+Assignment3: create a component       select a coutry
+									<dropdown list of countries>-->initially when the component is loaded display some countries
+									<dropdown list of states>---->when user selects a coutry then this dropdown should show the cities of that country
+
+Assignment4: create a component       employee names
+										<div element>--->display 10 employees naes each employee must be a different div tag 
+										add a buttton for each employee title of the button must be'Delete<empname>'
+										when the button is clicked that employee must be deleted
+										
+										
+									  add a new employee 
+									    <text box><button add>--->when th button is clicked the enterd emp name must be shown
+										
+Assignment5: Create a component       parent 									child 1							child 2
+											Enter a number  <button Square>           Square Compoent				cube component
+															<button cube>				<div element>					<h3>
+																				when square is clicked				when cube is clicked 
+																				data should come to this 			data should come  to this child
+																				child
+																				
+Assignment6:  Create a component      Parent(welcome screen)				Child component(login component)
+											<div>					          <user name input>
+																				<password input>  <button sign in>
+																				if  password is CT then the div in parent should display the username 
+									  
+															
+		 							
+===============================================									
+ANGULAR'S BUILTIN DIRECTIVES
+																								
+	1.ngIf--->adds or removes a dom element based of some conditions (if true dom elemet is added else dom element is removed)
+			  this is called as structural directive as it aler the structure of the webpage
+				Syntax
+						<element *nglf='condtion'></element>
+							eg:<p *nglf='10>2'>hello</p> if condition is true then the p element is shown else p is not shown 
+	2.ngFor--->also a structural directive, it clones the element on whcih it  is applied based on te no of items in the collection\
+	           used to iterate a set of elements in an array it will create a copy of the html element on which it is applied
+			   use cases:generate list of in a drop down list
+			   
+			   Syntax:<element *ngFor='let variable of arrayname'></element>
+						<p *ngFor='let bname of booknames'>
+						   {{bnames}}
+						   </p>
+	3.ngStyle --->attribute directive
+	4.ngClass---->attribute directive
+	ngSwitch----->attribut directive
+	ngSwitchCase->Structural directive
+	ngSwitchDefault->Structural directive 
+	
+================================================
+COMPONENT COMMUNICATION
+1.Parent to child communication-->Steps
+										1.Create a public daa member in the child component decorated with @input() decorator
+										2. The parent component will then use a property binding syntax to pass data into the child  component
+													->this has to be done from the template of the parent component when it renders the child component
+										3.@input needs to be imported fro @angular/core library
+										
+									
+2.Child to parent communication-->
+									1.create a public data member (must be of type event emitter in the child decorated with @output decorator)
+									2.the child has to 'emit'that custom event some how using the 'emit()' methood of the event emiter class and 
+									pass data to the parent
+									3.parent will use an even bidding syntax to register a handler with the event and get the data from the child 
+									Event emitter must be impoted form @angular/core 
+3.Sibling communication
+	
+	
+	
+===========================	
+Event tunneling(Can be done only using add event listener) top lvl to lower lvl an bubbling	 lower lvl to the top lvl
+===========================	
+	
+	ng new citiustech --application=false
+	ng generate application Name--->creates a new progest in the above folder and we can add multiple such comands each command will have its 
+										own root component
+	
+	
+	
+	<div *ngif='condt';else #showpara></div>
+	<ng-template #showpara>
+	elements
+	</ng-template>
+	
+	
+===================================================================================================================================================
+DEPENDENCY INJECTION
+		DI, is a design pattern and mechanism for creating and delivering some parts of an application to 
+		other parts of an application that require them
+		increase flexibility and modularity
+		
+		
+		Two main roles exist in the DI system: dependency consumer and dependency provider
+		@Injectable decorator to show that the class can be injected.
+		At the Component/ngModule level, using the providers field of the @Component decorator
+		
+		@Component({ … })
+class HeroListComponent {
+  constructor(private service: HeroService) {}
+}
+
+Service is a broad category encompassing any value, function, or feature that an application needs. 
+A service is typically a class with a narrow, well-defined purpose. 
+
+ng generate service heroes/hero---->command to generate services
+
+
+===================
+PIPES
+
+	(Pipes are simple functions to use in template expressions to accept an input value and return a transformed value
+	Pipes are useful because you can use them throughout your application, while only declaring each pipe once.)
+	
+	
+==========================================================================================================================================	
+DAY3
+	
+PIPES
+		Pipe is used to transform data in the HTML template(Foratting date,number,string etc)
+		always used in HTML template and not  .ts files
+		can be ued with property binding as weell as interpolation
+			SYNTAX:
+					{{expression | pipename}}
+									--->the expression on the left side is the input to the pipe
+									    the expression is transformed and replaced with the transformed output
+		pipes can be 'chained'
+					{{expression|pipe1|pipe2|pipe3|...}
+		Angular has builtin pipes and custom pipes
+		pipe name sare all lowercase
+		
+		
+=====================================================================================================================================================================		
+Assignment1: create a component   select a currency note
+									<<drop down list>>
+													countries:
+														
+									<P>
+									display some number</P>
+								if user selects select then its should not display any currency
+
+Assignment2: create a component   <textbox>day of the month
+									<textbox>day of the month
+									<textbox>day of the month
+									
+									select a date format:
+									<radio button> full date
+									<radio button> short date
+									<radio button> medium date
+									
+									<button>show date
+									
+									<div>--->this element must be shown whenthe user clicks on the button and display the date in the format 
+												of the radio button specified
+
+Assignment3: create a component    <Text box> enter marks of TS
+									<Text box> enter marks of Angular
+									<Text box> enter marks of .NET Core
+									
+									default value must be 0 in all the boxes
+									
+									<p>show the total marks here by adding all the marks
+									 
+									 <p> display the average
+									 
+									 <h1> display the percentage of marks
+
+Assignment4:  create a component   create a public data member in the component class(public instock:boolean=false) use 2 way data binding and bing the checkbox 
+										to instock
+									create a div element display the value of Instock
+									from google download 2 images tick and cross 
+									store  the images inside the asset folder (find the purpose of asset folder)
+									create a custom pipe named stock the pipe is used to disply tick if the checkbox is true else display 
+									{{instock|stockstatus}}--->retur tick mark img or cross mark img
+									 
+====================================================================================================================================================================
+
+		pipe chaining:
+				{{tody|date|titlecase}}
+	
+CREATING CUSTOM Pipes
+=====================
+	a pipe is a TS class with @Pipe() decorator
+	A pipe cn be created using command	using ng generate pipe << pipename>>
+	The pipe's transformation logic is written inside a 'transform()' methood inside the pipe class
+	Angular will call the transform() ,ethood each time whenever the ppe input changes
+						-->this is a disadvantage because if the logic under transform is heavy then this will get executed each time you change the input
+							so we will have to keep the transform logic simple
+	Every pipe implicitly takes only 1 input but a pipe can also take multiple inputs {{amt |currency:'INR':'YEN'}}
+	when we generate a pipe t will only create .ts files
+	
+	
+DEPENDENCY INJECTION
+====================
+
+commonly used software design pattern in which dependancies are not explicitly created in a class/component requiring it but the creation 
+is handled by some external piece of code and then injected into the calling code at runtime
+
+WHY DI:
+		no hard coding of dependencies
+		makes the code more maintainable and testable
+		DEPENDENCies can be mocked during unit testing
+	
+	ng generate service <<servicename>>
+	
+	
+to use a service in a component specify its as a dependency in a constructor of the component's TS class
+When angular creates a component it sees that there is a dependancy it will then create an instance of the service class and
+inject that instance into the component at runtime this instance will then be cached and resued whenever any other component specifies it as a dependancy		
+		angular will not re-create this instance again meaning service instances are by default 'singlton' instances
+	
+	
+Assignment-1: the counterservice will contain the following				
+						private count:number=0
+						public increment():number{}
+						public decrement():number{}
+						public getvalue():number{}--->get current value of count
+						
+ROUTING
+=======
+	is a techinique to implement navigation into a sngle page application
+	in angular routing is the way to navigate between components based on some url pattern
+	eg:
+		if the URL is /home then show the home component
+		if the url is /about then show the above element
+	
+	
+	
+	
+	
+	
+	

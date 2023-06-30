@@ -1,0 +1,262 @@
+UNIT TESTING ANGULAR APPLICATION USING JASMINE AND KARMA
+
+DAY-1  Date:07-10-21
+====================================================================================================================================================================
+
+What?
+	Evaluate the functionality of the software  to ensure it meets th especifies requirements or not
+	testing involves writing a test
+Why?
+	1.Instead of clients finding out bugs we can ourselves find the bugs and rectify it
+	2.Customer Satisfaction
+	3.Prevent Regression(Client requests some changes so upon adding those features it should not effect the existing code)
+	4.Tests are never out of date since they always run against live code(live code meaning the latest code we have written)
+	5.Strengthens Security
+	6.To fine tuen the performance
+
+Types Of Testing:
+=================
+	A.Manual Testing
+		QA analysts (humans) perform test cases and generate test reports
+		Time consuming
+		Error prone(human error)
+		
+	B.Automated Testing
+		Automation tools/softwares executes the test cases
+		Fast/Less time consuming
+		Repetitive tetsing ie:as soon as some feature is added or removed the tool automatically runs tests on the new code
+			CI-->as and when new code is added application is built and re-rendered
+		The test cases have to be written by us but the execution is done by he tools and in the end it gives us a code coverage area
+		summary and here we get to know if we have missed some code  for testing
+			
+		Types of Automated Testing:
+			1.Unit Testing 
+				Tesing single unit of code in isolation
+				unit can be a class,function etc but that particular unit should be stand-alone code and it should not depend on any other code
+				Unit should be as small as possible
+				done by developers
+			2.End to End Testing (E2E Testing)
+				Testing from a users perspective
+				Test the entire flow of the app
+				The tesing is done against a live app,db server,etc.
+			
+			3.Integration/Functional testing
+				More then a unit test and less then E2E
+				testing more then a single unit together
+				
+Types Of Tests In ANGULAR
+=========================
+	1.Isolated Unit Tests
+		Test a component,service,directive in isolation
+		The unit needs to be constructed in the test itself
+		No framework Dependencies
+		
+	2.Integration Tests
+		Test components in the context of the FW
+		The unit will be constructed by the test FW
+		Eg:
+			Testing a component with its template
+		Types of Integration tests in Angular:(Workd only for component and Template)
+			1.Deep
+				Will involve child component also when the parents are tested
+			2.Shallow
+				test a single component template without its children
+				
+What Is A Test
+===============
+		Is some code which is used to check/verify your application's code
+		Is composed of one or more 'assertions'(Assertion is a boolean expression which either returns a true or a false)
+			Why is asserton IMP:The success or failure of a test is determined by the result of the assertion
+		Test files will be committed to a source control repo along with the app code(This is done so that automation test tool can execute test when there is code change)
+		
+Basic Testing Terminologies
+===========================
+	1.Test Case:
+		A scenario
+		A specification of given inputs and the expectes results
+		
+	2.Test Suite
+		A collection of test cases(logical grouping)
+		Test a specific feature/behaviour
+	3.Assertion
+		A boolean expression which will either return a true or a false
+	4.Testing Framework
+		Provides a structured way of writing tests,provides libraries for writing tests ,asserting and also executing the tests(tets runners)
+			Eg:JASMINE,Mocha,xUnit,nUnit,jUnit etc....
+		
+	5.Test Runner	
+		Softwares or tools that pick up your test code containing tests,read soe configuration and execute th etests,generate the reports on the screen or log it into files
+			Eg:KARMA
+	
+	
+ANGULAR USES JASMINE AND KARMA(JS based) BY DEFAUT AS THE TESTING FW AND TEST RUNNER RESPECTIVELY
+
+What is JASMINE?
+================
+	Is a BDD(Behaviour driven devolopment) testing Framework for JS
+
+
+Basic Structure Of a test in Jasmine :
+	Jasmine uses certain function when writing tests	
+			1.Describe()-->used to create a test suit
+			2.it()-->defines a test case
+			3.beforeEach()-->common setup  to be execute before each test case 
+			4.afterEach()-->common setup  to be execute after each test case 
+			5.beforeAll()-->common setup to be executed before each test suit
+			6.afterAll()-->common setup to be executed after each test suit
+			7.expect()-->used to 'assert'
+			
+The 'AAA'(Arrange,Act,Assert) Pattern
+======================================
+	Arrange:-Set the initial state of the test case
+	Act:-perform some action which changes the state
+	Assert:-Check for the expected results
+				expect(actual value).<<matcherfunction>>(expected value)
+	
+	
+Writing Unit Tests In Angular(Jasmin and karma are pre-configured)
+==================================================================
+	1.The test filename must follow this pattern:
+		<filename>.spec.ts
+	2.The test file must be inside 'src/app folder
+	3.To run the tests use the Angular cli command
+		ng test-->internaly launches the karma tests runner
+	
+	
+	
+demo.spec.ts
+============
+	descibe(string(name of the feature),callback function(){
+	create one or more test cases
+	it(string(specific test cases ususally begins with should),callback(){
+	AAA Pattern-->create objs,declare variables,set initial values
+	Act-->call methoods of class,modify vlues of a variable
+	assert--> compare the actual value with the expected value
+	    
+	}
+	)})
+	
+	
+	The string has to be such that it should be  understandable by anyone who reads the test file and he  mite be a techinical or a non-techinical person
+	
+	'describe' describes the feature and it gives us the specific use case so as in normal language  we can use should 
+	and these strings are shown in the test report so we shild make sure that the strings must be understandable by everyone
+	 .tobe()--->similar to '==='
+	
+=====================================================================================================================================================================================
+DAY-2 08-10-22
+==============
+
+Writing Isolated Unit Tests
+===========================
+	Testing a single init in isolation or independantly without any dependancies
+		if ther are any dependancies these need to be mocked
+	
+	eg:tesing a component class
+		testing a custom directive/pipe class
+		testing a service class
+		
+	1.Write an isolated  test 
+	
+MOCKING
+=======
+		What?
+			A mock is also know as a test double 
+			A mock is a fake copy of the original class/function  to be used for tesing only
+			Way to replace the actual dependancy with a fake dependancy so that unit testing becomes easier
+			Easier way to wrie an isolated unit test
+		Why?
+			Improves test execution speed-->unesary creation of instances which are not part of that particular test case will take time if that particular class has 
+				heavy code and complex algorithm and they may use externl resources eg:-Db Req,Rest Services so mocking  will help us overcome this issue and make tesing faster
+			
+			Supprts parallel devolopment-->suppose a unit is not completed but some part of it is done but this part depends on the unfinished parts so with the help of
+				mocking we can mock the unfinished part and then test the completed part and when the entire unit is completed we can perform integreation testing and test the whole comonent/unit
+			
+			Makes the test more reliable-->suppose if the dependancy has some error and that dependancies fails thn the test also fails now the prblem is  the test failed becuse of the dependancies 
+				and not the one we had inteded to test so we can use  mocking 
+				One more problem is suppose the dependancy worked fine the first time but second time we you test it failed not thees a problem becaue we will not be able to find the problem easily 
+				Difficult to realize wheather there is an issue in the dependancies or the actual unit
+				
+			Cost efficient-->rducing testing cost
+			
+Jamine
+======
+	uses a concpt called spies' to create mocks
+		1.Track methood calls on it
+		2.Can customize methood return values
+	spies can be querried to get to know how many times was the mock called  and with what oarams wa it called and then customize it to return the values you want to mock it 
+			
+	spyOn(name of the class(component/service etc name),name of th function)-->creates a mock of that functions and if the return type i not configured then its returns undefined but the original logic inside the original function 
+																				is replaced by a fake function and fake logic
+	Use spyon()-->to use the following matchers:1.tohavebeencalled(),2.tohavebeencalledtimes(n)-->returns true if function is called n times
+			we write the spy on before the expect 
+				expect().tohavebeencalled()-->true if the function is called atleast once
+	jasmine.createspyobj('name of the mock(can be anything)',[array of functions to be mocked])-->mock the entire class		
+				fake class,jasmin automatically put spies on the functions in the service,customize the return type on those fake methoods
+			
+			
+DAY 3 09-10-22			
+=====================================================================================================================================================================================
+Async Tests
+===========
+	this is used for async functions like promise,callbacks etc 
+		usual behaviour of jasmine and karma is they do not wait for the code to get completed so if your promise returns the data after some seconds 
+		it will throw an error as initially it wont get any data 
+		Jasmine does not wait for long running operation inside the it block
+		
+	We will have to ask jasmine wait so that the promise or any async code should get executed so we need to write a async test
+		Using 'done'-->this is done by passing a callback function in the paramater of IT function
+		Using async and await
+		
+	MOCKING
+	=======
+		<<Mock_name>>.<<methoodname>>.and.returnValue(<<return Value>>)
+	
+
+
+INTEGRATION Tesing
+==================
+				Testing a component with its template
+				Shalow and Deep testing
+				
+			Angilar's Testong library:
+				TestBed:-used to simulate a fake angular environment for integration testing
+							
+			Steps:
+				1.Create a  fake angular environment using test bed class and its a part of angular/core/testing libraries
+				    the component we give in declaration will create a fake angular module with the component and its template 
+					the fake environment will take take of all the root module and ny other libraries if necessary
+				2. get access to the component instance so that the @input property can be set
+					use the ComponentsFixture<T>given by angular library
+					meaning:we use this to create a class and then acces the data members inside in but for unit testing we use a component fixture which will give us the object of that component
+						and then we can use that object to access the dat members
+				3.Using the fixture get the instance
+				4.set properties of @Input members using the instance
+				5.get access to the h6 element of the component template and the access to the template is given but the component fixture 
+				    debugElement gives us access to any dom element within the template 
+					By is used to search for a dom element based on a criteria its similar to document.getelement
+					returns the first occurance of the element we need
+					query-->returns the fiest occurance but query all->gives us an array of all the occurance of that element
+					
+**************
+chnage detection is not enabled during testing  so we have to anually enable it so that when we do some changes to the data binding part of the html element the changes are reflected  
+**************
+			
+			
+	DEEP INTEGRATION Test
+	======================
+		
+			Forms modules has to be imported if the orig template uses ngModel and then if we mock any class it has to be provided under providers 
+					providers[{Provider:Actual_service,value:mock servive name}]
+			
+			
+			
+			
+			
+			
+			
+			
+
+
+
+

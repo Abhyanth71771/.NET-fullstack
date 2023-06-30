@@ -1,0 +1,1653 @@
+
+AZURE DAY-1 28-12-2022 
+=======================
+
+Azure free tier Subscription(Use a microsoftID)
+
+
+Security of the cloud-->data center security managed by cloud
+Security on the cloud-->data present in the cloud can be acced by whom will be decided by the customers
+
+
+types of subscription:-
+	1.Free Tier
+	2.Msdn
+	3.pay as you go
+
+
+we give a region to a resource group  because		
+			1.MS stores the metadata in that region 
+			2.in case you dont give any region to a resource the default region will be the one given to the RG 
+
+
+Azure Free Tier Subscription
+	Create a Microsoft Id
+
+Create a Azure free tier subscription
+	a. 200 USD credited as virtual money in your Azure acc.
+	b. Can be used for the next 1 month (you can access any paid Azure svc and 
+                    the amt gets debited from your virtual money)
+	c. After 1 month, you need to upgrade to Pay As You Go & only then for the 
+	   next 11 months you are eligible for Azure free tier subscription
+=======================================================
+
+.NET SDK & Visual Studio 2022 Community Edition
+===================================
+
+What & Why Cloud Computing?
+	What is the cloud?
+		* Fancy name given to the "Internet"
+		* Data centers containing high capacity servers	
+			* Data centers all across the globle interconnected
+			   with each other and able to communicate
+
+	What is cloud computing?
+		* Accessing computing resources like CPU, storage, network, etc.
+		   or performing computing tasks like data processing, analyzing,
+		   calculations, etc. via cloud
+
+Why Cloud/Benefits of Cloud??
+a. Reduced costs	--> no upfront investments, less time in setting up the infra
+b. Pay as you Go	--> pay only for what you use
+c. Scalability	--> MANUAL
+		Vertical Scaling		--> increasing capacity of the current 
+					       computing resource
+					--> SCALE UP/DOWN
+		Horizontal Scaling		--> increasing number of computing
+					       resources
+					--> SCALE IN/OUT
+
+d. Accessibility	--> resources accessible 24x7, 365 days from anywhere
+		--> no restrictions on the orgin of access as such
+
+e. Automatic Updates/Maintainability
+
+f. Security (SHARED RESPONSIBILITY MODEL)
+		Security of the cloud	--> responsibility of Cloud Provider	
+		Security on the cloud	--> responsibility of the customer
+
+
+g. Business Continuity
+	High Availibility
+	Fault Tolerant
+
+h. Self-Service/Agility
+
+i. Elasticity	--> AUTOMATED
+	Scaling on demand
+	
+
+
+
+
+Cloud Computing Models
+	SaaS		
+		ready to use software
+		accessible using a web browser
+		no installation required
+		no maintainence required
+		pay as you go (based on the rates)
+		YOU DO NOT OWN THE SOFTWARE
+		Examples: O365, Dropbox, Gmail, Outlook online, MS Teams,
+		WebEx, Zoom, etc...
+	PaaS
+		Infra + softwares
+			Pre-created environment (customizable)
+			Ex in Azure
+				App Service, Azure SQL, 
+				Azure Kubernetes Service (AKS),....
+
+	CaaS (Containers As A Service)	--> Microservices
+		Use containers instead of VMs
+		Auzre: ACS (Azure Container Service)	
+		
+	IaaS
+		Computing resources
+			VM, Network, LB, Hard Drive, IP Address, Storage Acc, ..
+
+
+Types of Cloud
+	Private	--> specific to an org
+	Public	--> open to all
+	Hybrid	--> mixture of public and private
+
+Azure Regions and AZs
+	What is an Azure Region?
+		* Its a geographical location on the globe
+		* A collection of one or more DCs	--> high level
+			A collection of 1 or more AZs		
+	What is AZ?
+		* Its a grouping of one or more DCs within a region
+
+	Each region has atleast 2 or more AZs
+
+	Why Regions and AZs?
+		Reliability
+		High Availability
+		Fault Tolerance
+
+
+On What basis will you select a region?
+	To reduce latency select a region close to your customers
+
+	
+
+	
+Azure Accounts, Azure Subscriptions and Azure AD
+
+	Azure Subscription?
+		* An agreement between the customer and MS
+		* A unit of billing
+		* When you create a subscription, you automatically become a
+		   part of an Azure AD instance
+		* Each subscription is linked to an instance of Azure AD
+		* Each subscription contains one or more RGs
+			Each RG contains one or more Azure resources
+
+				Org
+					user accounts	--> Azure AD
+						Subcription(s)
+							RG(s)
+								Resources	
+
+	Organization
+		* Some kind of a business entity which wants to use MSs cloud
+		  offerings (Azure, O365, etc..)
+
+		* A single org can have multiple subscriptions
+
+			1 ORG: M Subscriptions
+
+	Azure AD
+		* Its an Identity and Access Management Service on the cloud
+		* Its a repo (DB) where user accounts and user info is/are stored
+		* Its an IDP
+
+
+Azure Resource Manager and Resource Groups
+
+	What is a RG?
+		* Logical grouping of Azure Resources
+	What is an Azure Resource?
+		* Any managable item accessible through MS Azure
+			Examples:
+				VM, storage acc, IP Address, SQL DB,
+				App Services, LB, VMSS, .....,....VNET
+
+	Why RGs?
+		1. Logical grouping
+		2. Same lifecycle for all resources in a RG
+			When the RG is removed, all resources are removed
+			automatically.
+		3. RBAC policies can be applied on a RG at a very granular level
+		4. Cost management can be done at a RG level
+			View/track costs at a RG level
+		5. Resource deployment with a RG can be automated and can be 
+		    repeated easily
+		6. RG level locking
+			to prevent accidental deletion of resources
+
+	* Each resource can be a part of only one RG at a time.
+	* Resources can be added/removed from a RG at any given point of time
+	* Resources can also be moved from one RG to another
+	* Resources within a RG can belong to different regions
+
+
+Azure RM
+	* Its a deployment and management service in Azure
+	* Supports ARM template deployments
+
+
+Ways to access Azure Services?
+	a. Azure Portal (portal.azure.com)
+		Web UI
+	b. Azure PowerShell (Windows based utility)
+	c. Azure CLI (Cross Platform command line utility)
+	d. Client SDKs (.NET SDK, Java SDK, Node JS SDK, Python SDK, etc...)
+	
+
+1. Create a RG
+	"rg-freshers-azuretraining"
+
+2. Start creating resources in the RG
+
+	Demo
+		a. Create VNetwork
+		b. Create 2 subnets inside it
+		c. In each subnet, create a VM (1 Windows VM and 1 Linux VM)
+		d. Establish communication between each VM within the VNET
+		e. Establish communication with the Windows VM from the internet
+			RDP and HTTP
+		f. Use NSGs to restrict incoming and outgoing traffic into the VMs
+
+Resources
+	a. Vnet
+		Create a vnet
+	b. Subnet
+		Create 2 subnets
+			webservers-subnet
+			dbservers-subnet
+	c. VM
+		NIC
+		IP
+		Hard Drive 
+			* Ensure that the region of the VMs is same as region of the Vnet
+			* When creating VMS:
+				* Choose inbound port	--> None
+				* Choose NSG	--> None
+				* Choose Public IP	--> None
+
+			Create a Windows VM	--> part of webservers-subnet
+			Create a Linux VM	--> part of dbservers-subnet
+
+			Create a public IP 	--> resource (dynamic IP)
+				Choose the SKU as Basic
+			Associate this public IP with the NIC of the win vm
+			Take an RDP of the Windows VM
+
+			RDP????(Remote Desktop Protocol)	--> 3389
+			Exposing RDP port to the internet is very risky!!
+
+			* Open a cmd prompt on the windows vm
+			* Ping the linux VM using its private IP
+				ping <<private IP of the Linux VM>>
+
+
+			* Do an ssh into the Linux VM from the windows VM
+				ssh <<username>@<<private IP of linux VM>>
+
+
+			* Take a remote of the windows VM
+			* Install IIS on it
+			* Create a file named "index.html" inside 
+			   c:\inetpub\wwwroot folder
+			* Open a browser on your VM and browse to
+				http://localhost/index.html
+
+			* Access this page from your CT laptop:
+				http://<<public IP of VM>>/index.html
+				http://20.124.238.15/index.html
+	d. NSG
+		
+
+Azure Virtual Networks
+Azure VMs
+Load Balancing and VMSS
+
+
+
+DAY-2
+=========================================================================================================================================================================================================
+
+
+What and Why Cloud Computing
+CC Models
+Types of Cloud
+Azure AD, Subscriptions, Accounts
+ARM, Resource Grps
+
+Demo
+	Create a VNET
+	Create 2 subnets
+	In each subnet, create a VM (windows & ubuntu)
+		Both vms initially will not have a public ip
+	Create public ip
+	Associate the public ip with the NIC of the win vm
+	Take an RDP of the windows VM
+	From the windows VM, ping the linux VM using its private IP
+	From the windows VM, SSH into the linux VM
+		ssh <<username>>@<<private IP of the linux VM>>
+	From the linux VM, ping the windows VM using its private IP
+
+	Install IIS on the Windows VM
+	Create an HTML page (home.html) inside c:\inetpub\wwwroot folder of the win vm
+	Open a browser on the win vm and browse to
+			http://localhost/home.html
+	From your CT laptop, browse to:
+			http://<<public ip of the windows vm>>/home.html
+
+	Do an SSH into the linux VM using its private IP
+	Do an HTTP into the Windows VM using its private IP:
+		curl http://<<private ip of win vm>>/home.html
+
+
+Network Security Groups (NSGs)
+	* Its a collection inbound & outbound rules which determine what kind of
+	   network traffic can come into the subnet/vm and what kind of network
+	   traffic can go outside the subnet/vm
+	* Can be attached to a subnet or an individual NIC of a VM within a subnet
+		* If the same inbound/outbound rules are to be applicable for all
+		   VMs in a subnet, apply the NSG at the subnet level
+		* If the inbound/outbound rules are different for each VM
+		   in a subnet, apply the NSG at the NIC level
+
+
+	Create an NSG
+		Inbound	--> source, incoming traffic
+		Outbound	--> target, outgoing traffic
+
+	Associate the NSG with the webservers-subnet
+		From your CT laptop, browse to: http://20.120.107.210/home.html
+
+	*By default the inbound rules of a newly created NSG does not allow any traffic
+	 from outside the VNET
+	* These default rules CANNOT BE CHANGED OR DELETED
+	* New rules can be added/removed
+
+
+	TODO:
+		* Create another subnet in the VNET
+		* Create a win vm inside this new subnet
+		* Create a NSG which allows SSH into all VMs in dbservers-subnet
+		   only from webservers-subnet
+		* Attach this NSG to dbservers-subnet
+		* Try pinging the linux VM inside dbservers-subnet from a 
+		   windows vm inside webservers-subnet & also from a windows
+		   vm from the newly created subnet and check the results
+
+
+By default all VMs have access to the internet
+	Reason is the NSGs default outbound rule allows any kind of outgoing traffic
+	To block this access, override the default rule
+
+
+	If a rule with a lower priority for a specific service/protocol DENIES the traffic
+	and if a rule with a higher priority for a specific service/protocol ALLOWS the
+	traffic, then the traffic is DENIED
+
+		lower the number higher is the priority
+		higher the number lower is the priority
+
+	Ex:
+		5000	--> HTTP		--> ALLOW
+		4999	--> HTTP		--> DENY
+
+		Result? HTTP will be?DENIED
+
+
+		6000	--> HTTPS	--> DENY
+		5999	--> HTTPS	--> ALLOW
+		Result? HTTPS will be?? ALLOWED
+
+
+Load Balancing
+	* Its a way to evenly distribute the incoming network traffic across a set of
+	   VMs
+
+	* Types of LBs
+		a. External/Public LB
+			* Is a LB which has a public IP
+			* Accessible from outside VNET also
+		b. Internal/Private LB
+			* Is a LB which does not have a public IP
+			* Accessible only from within a VNET
+
+
+Demo of a public LB
+	* Create 2 windows VMs with a public IP
+	* Install IIS on each VM
+		* Deploy a simple web page on each VM
+	* Create a public LB
+		* Put the VMs behind the public LB
+		* Remove the public IP of the VMs
+	* Access the VMs (web page) using the public LBs public IP
+
+Needs to be cross checked again
+======================================================
+If a VM is created without/with RDP ports open and if there is no NSG applied at the 
+subnet/NIC level, as per MS docs, we should be able to do RDP into it
+======================================================
+Solution for time being
+	Create an NSG, apply it to the subnet
+	Add inbound RDP and HTTP rule
+
+
+
+Components of a LB
+	a. Frontend IP configuration
+		public/private IP of the LB
+		
+	b. Backend Pool
+		Individual VMs which need to be put behind the LB or it could be a
+		VMSS also
+
+	c. Health Probe
+		Its a way to check if the underlying VMs are responding to a check
+		made by the LB to ensure that the VMs are healthy
+
+		If the VM does not respond to the health probe, the LB considers
+		the VM to be unhealthy & stops routing traffic to it
+	d. LB Rule(s)
+		Determines on what basis should the load balancing be done
+		The frontend port, protocol and the back port and protocol
+
+		Ex:
+			if the request comes to the LB on port 80 (HTTP),
+			redirect traffic to the underlying VMs on port 80(HTTP)
+
+
+	Once you put the VMs behind the LB, the public IP of the LB can be used
+	to get into the VMs 
+		If there are multiple VMs behind the LB, then to get into a 
+		specific VM add Inbound NAT (Network Address Translation)
+		rules to the LB
+
+DAY-3		
+=====================================================================================================================================================		
+identical vm's-->will have the same configs same hard disk ram e6tc
+
+Public IP
+	2 Tiers (SKUs)
+
+	a. Standard
+		It requires an NSG
+	b. Basic
+		It does not require a NSG
+========================================================
+
+Load Balancer (Public/Private)
+SKUs
+	Basic
+		Cost efficient
+		Only VMs which are a part of a VMSS (individual machines not allowed)
+		Health Probes: TCP & HTTP
+		Not zone reduandant
+	Standard
+		Costly
+		Individual VMs or VMs which are a part of a VMSS
+		Health probes: TCP, HTTP and HTTPs
+		Zone reduandant
+
+LB		LB		LB
+Zone1		Zone2		Zone3
+VM1		VM3		VM5
+VM2		VM4		VM6
+========================================================
+Azure bastion
+Azure VMSS and LB
+
+	* What?: A VM Scale Set is a collection of "identical VMS"
+	* Why?
+		* Easy and quick provisioning of VMs at one single go
+		* Load balancing
+		* Ensures high availibility of your apps
+		* Scaling (Manual/Automatic)
+	Scaling 
+
+	How to get into a VM in a VMSS which does not have a public IP???
+		a. Use LB's public IP and configure inbound NAT rules
+		b. A Jump server
+		c. Azure Bastion service
+			* A secured way of doing an RDP/SSH into a VM without
+			  a public IP
+			* No NSG required on the VMs/subnet
+			* Direct access to the VMs using their private IPs from
+			   the azure portal
+
+Steps:
+1. Create a VNET with a default subnet
+2. Create an Azure Bastion in the VNET
+3. Create VMSS in the default subnet created in step1
+4. How to install the Web App in all the VMs in a VMss
+		a. Go into each VM (RDP/SSH) and install the web app
+		b. Use Azure VMSS extension (script --> PS Script, BASH script)
+		c. Create a VM manually (Windows/Linux)
+			a. Install the required softwares/web app on the VM
+				a. Install IIS
+				b. Install .NET Core SDK(6/7)
+				c. Create an ASP.NET Core MVC web app
+				d. Test the app locally
+				e. Install .NET Core Bundle for IIS deployment
+					Stop and restart IIS
+						net stop was /y
+						net start w3svc
+	
+				f. Deploy the .NET Core web app to IIS
+					dotnet publish -c Release -o c:\mywebapp
+					Go to IIS 
+						Start-->Run-->inetmgr
+						Right click on Default web site--> Add Application
+						Specify alias as "mywebapp"
+						Physical path
+							path of published output folder (above)
+						Click OK
+					Application Pools---> Default AppPool
+					Right side --> Adv Settings
+					Identity-->LocalSystem
+					OK
+					Browse to
+						http://localhost/mywebapp
+				
+				g. Test it locally
+				h. Test it from outside
+					http://20.163.138.252/mywebapp
+			
+			b. Create a custom image of the VM
+				a. Generalize the VM
+					* Open a cmd prompt in the VM
+					* cd into c:\windows\system32\sysprep
+					* Run this command:
+						sysprep.exe /oobe /generalize /mode:vm /shutdown
+
+			c. Use the custom image to create a VMSS
+				Click on Capture from the VM blade
+				Specify RG
+				Gallery Name
+				Image definition name
+				version number
+
+Create a VMSS with the custom image
+
+	http://20.25.4.126/mywebapp
+
+
+Scale out	--> 1 VM created			
+	Cool down time
+Scale out	--> 1 VM created	
+
+
+
+Azure Storage
+	* Microsoft's cloud based storage solution
+	* Highly scalable, durable, reliable, highly available and secured
+	* Can be accessed using HTTP, HTTPs
+	* Can be accessed using client libs for .NET Core, Java, Python, etc...
+
+	Types of Azure Storage Services
+		a. BLOB Storage
+			Binary Large Objects
+			Object based storage
+				Text, Binary data, images, audio, video files, etc.
+			a. Block Blob
+				Capable of overwriting
+			b. Append Blob
+				Supports only append operations
+				Used for logging
+			c. Page Blob
+				Used by Azure Disks (.VHD files)
+				Random R/W operations
+		b. Table (Azure Tables)	--> Enhanced ver...Azure Cosmos DB
+			NoSQL DB on the cloud 
+		c. Queue
+			For Messaging
+			App1		<---Queue--->	App2
+		d. File (Azure Files)
+		cloud based version for leagacy file server
+			For legacy apps	
+				Lift and Shift
+			Can be mounted on the local system using some drive
+			Storing shared application config settings
+			Can be used as persistent volumes for containers
+
+		e. Azure Elastic SAN (Storage Area Network) --> Preview	
+
+
+
+	File Servers
+		\\<<fileservername>>\\<<folder name>>\\.....
+
+
+	Storage Acc
+		Storage Performance Tiers
+			Standard		--> HDD
+			Premium		--> SSD
+
+		Redundancy
+				To ensure higg availibility
+		
+		REDUNDANCY IN THE PRIMARY REGION
+		LRS	--> Locally Redundant Storage
+			3 copies of your data in a single DC within an AZ in a 
+			region
+			Cost effective
+		
+		ZRS	--> Zone Redundant Storage
+			3 copies of your data are maintained in each AZ (1 copy 
+			in each AZ within that region)
+
+
+		GRS	--> Geo Redundant Storage
+			6 copies of your data are maintained			
+		Primary region	--> 3 copies (LRS)
+		Secondary region	--> 3 copies (LRS)
+
+		GZRS	--> Geo Zone Redundant Storage
+			6 copies of your data are maintained			
+		Primary region	--> 3 copies (ZRS)
+		Secondary region	--> 3 copies (LRS)
+
+* In GRS and GZRS, the paired/secondary region is not available for R/W unless the 
+   primary region goes down
+
+
+		RA-GRS
+		RA-GZRS
+
+* In RA-GRS and RA-GZRS, the paired/secondary region is available for reading 
+   whether or not the primary region goes down
+
+		
+
+	Paired Regions
+	East US		--> West US
+
+	Storage Access Tiers
+		* Hot
+			* Used for data that is frequently accessed
+			* Highest storage costs, lowest access costs
+		* Cool
+			* Used for data that is infrequently accessed
+			* Lower storage costs, higher access costs
+
+		* Archive
+			* Data that is rarely accessed
+			* Lowest storage cost, highest access costs
+
+Data can be moved from one storage access tier to another
+
+
+Data is always encrypted at REST
+
+
+1. Create a storage account.
+
+DAY-4
+=====================================================================================================================================================
+Azure Storage
+
+	Storage Account
+		Storage Services
+			Blob Storage
+				Block Blob
+					Overwrite blob
+				Append Blob
+					Appending	--> log writing
+				Page Blob
+					Azure Disks (.VHD files)
+			Table Storage
+				NoSQL data	--> Azure CosmosDB
+			Queue Storage
+				Messaging
+			File (Azure Files)
+				File Server on the cloud
+				Lift and Shift (Legacy apps)
+			Azure Elastic SAN (Storage Area Network)
+
+	Performance Tiers
+		Standard	(HDD)
+		Premium (SSD)
+
+	Redundancy
+		LRS
+		ZRS
+		GRS
+		GZRS
+		RA-GRS
+		RA-GZRS
+
+	Storage Tiers
+		Hot	--> higher storage costs, lower I/O costs--> frequently 							accessed		
+		Cool	--> lower storage costs, higher I/O costs---> infrequently 							accessed
+		Archive	---> lowest storage costs, highest I/O costs --> rarely 							accessed 
+
+Storage Acc name must be unique across Azure
+	Because???? unique URI
+
+
+	Encryption at REST (SSE)
+
+Client	--> upload a Blob	--> Azure Storage	--> Hardware Infra
+
+Client	<-- access a Blob	<-- Azure Storage	<-- Hardware Infra
+
+
+	Blob Storage
+		Blob Container	--> like a folder
+				       contains one or more blobs
+
+		Example:
+			App1	-->	Upload images	
+					Container: images
+						img1.jpg
+						img2.jpg
+						....
+			App2	-->	Upload videos
+					Container: videos
+						video1.mp4
+						video2.mp4
+						....
+			Blob
+
+
+	1. Create a blob container
+	2. Upload blob(s) into the container
+	
+
+	Container access levels:
+		a. Private (no anonymous access)
+			Blobs within the container can be accessed only by 			authenticated users
+
+		b. Blob (anonymous access to blobs only)
+			Individual blobs within the container are accessible
+			anonymously, but the container itself cannot be queried
+			for a list of blobs
+
+	* This access level is only for the "container" and not for individual blobs
+	* Access level can be changed at any given point of time
+
+Container: phi
+		
+
+If the access level is private, then how can a blob be accessed?
+	a. SAS (Shared Access Signature)	--> SAS TOKEN
+		Its a way to give granular access to a blob/container
+		The access can be fine tuned
+		The signature contains permissions, the storage acc identity, etc.
+			Also it contains the expiry time of the signature
+		A SAS token is not kept track by Azure. Infact the client needs to
+		create it
+		A SAS token then needs to be appended to the blob URL as a 
+		query string
+	sp=r&st=2023-01-10T03:42:49Z&se=2023-01-10T11:42:49Z&sv=2021-06-08&sr=c&sig=8qGFkwYITJCL9ZRGWnkPSYQtkgfPAeLL4hEYHMFw5iA%3D
+	https://abhyanth.blob.core.windows.net/cont1?sp=r&st=2023-01-10T03:42:49Z&se=2023-01-10T11:42:49Z&sv=2021-06-08&sr=c&sig=8qGFkwYITJCL9ZRGWnkPSYQtkgfPAeLL4hEYHMFw5iA%3D
+		Types of SAS tokens
+			a. Account Level	SAS
+				Applicable for all services in the storage acc
+			b. Service Level	SAS
+				Applicable only for a specific storage service
+		A SAS token is signed by an account level "acces key"
+
+	2. Storage Account access keys
+		* Cannot be used directly from the browser
+		* Can be used only with client libs & command line 
+		   (Powershell/Azure CLI)
+		* Anybody who has the access keys has "full permissions"
+		  on the storage acc.
+
+	3. RBAC	--> Role Based Access Control
+		User Accounts	--> part of Azure AD
+			user1	--> Role1--> permissions
+			user2	--> Role2 --> permissions
+			user3	--> Role3 --> permissions
+			
+		
+
+Blob
+https://karthik2153.blob.core.windows.net/mycontainer/demo.html
+?sv=2021-06-08&ss=b&srt=o&sp=ri&se=2023-01-03T07:30:00Z&st=2023-01-03T07:20:07Z&spr=https&sig=8bDOpKLouqEenqOmyfgHZoXgvdCVYu5i%2F39FqZOYtpo%3D
+
+
+https://karthik2153.blob.core.windows.net/mycontainer/installIIS.ps1
+https://manoj1234567.blob.core.windows.net/mycontainer/1.html
+
+Table
+https://karthik2153.table.core.windows.net
+
+Queue
+https://karthik2153.queue.core.windows.net
+
+File
+https://karthik2153.file.core.windows.net
+
+	Azure Storage Client Libraries
+		* Available for a number of programming languages
+			.NET Core, Java, Python, etc.
+
+		* For .NET, available as NuGet packages for all azure services
+
+1. Create a .NET Core App (Web API)
+2. Create a controller
+3. Following are the endpoints
+	GET: http://localhost:5271/blobs/containers
+		return a list of all blob containers in the storage acc
+		BlobServiceClient	--> GetContainers()
+
+	GET: http://localhost:5271/blobs/<<containername>>
+		return a list of all blobs in the given container
+		404 if no blobs exist
+		BlobContainerClient	--> GetBlobs()
+
+	GET: http://localhost:5271/blobs/createcontainer/<<containername>>
+		creates the specified container if it does not already exist
+		Conflict --> if the container already exists
+	POST: http://localhost:5271/blobs/upload/<<containername>>
+		Upload a blob in the specified container
+	
+	GET: http://localhost:5271/blobs/<<containername>>/<<blobname>>
+		Download the specified blob from the specified container name
+
+	TODO:
+	DELETE: 	http://localhost:5271/blobs/<<containername>>
+		delete the specified container if it exists
+		404 if the container is not found
+	
+	DELETE: 	http://localhost:5271/blobs/blob/<<containername>>/<<blobname>>
+		delete the specified blob in the specified container if it exists
+		404 if the container is not found
+
+
+4. Install the following NuGet Package
+	Azure.Storage.Blobs
+	dotnet add package Azure.Storage.Blobs
+
+	BlobServiceClient
+	BlobClient
+	BlobContainer
+
+5. Obtain the storage acc access keys (conn string) so that the client app can use it
+6. Store the conn string in the config file (appsettings.json)
+7. 
+	
+	
+with the help of access keys user can do any operations on blobs there is no restrictions 
+DAY-5
+==========================================================================================================================================
+Container access levels	
+	Private		--> no anonymous requests
+	Blob read only
+	Container and Blob	
+
+RBAC (Role Based Access Control) on a Storage Acc/Blob Container
+
+1. Create a user in Azure AD
+2. On the Storage, grant "Strorage Blob Data Reader" role to this Azure AD user
+3. With this user context, either using Azure CLI, Powershell or Azure storage client libs,
+    access the blob container
+	When using a storage client lib, add the following NuGet packages:
+		Azure.Storage.Blobs
+		Azure.Identity
+=======================================================
+
+Command Line operations
+	a. Azure Portal
+		Automation
+	b. Powershell	--> Windows users	
+			       Powershell commands suited to windows	
+	c. Azure CLI	-->  Standard Syntax	--> work on any env
+		is a set of commands to access azure services
+		Each command begins with "az"
+
+		Cloud Shell
+			Is a BASH or Windows SHELL which can be accessed
+			directly from the Azure Portal
+
+			Why?
+				No installation required
+
+			To use this, create a storage account
+
+
+If Azure CLI is installed on your local machine, run  the az login command first
+
+		
+	d. Azure SDK Client Libs
+
+DAY-6
+==========================================================================================================================================
+Azure PowerShell
+
+Azure CLI
+
+	Azure Cloud Shell	--> accessed from the portal
+
+
+	Blob Storage
+		Objective	--> Data Protection
+		1. Versions	--> has explicitly enabled
+			* Its a copy of a blob at a given point of time
+			* Is by default disabled
+			
+		2. Snapshots	--> does not require enabling 
+				--> a snapshot can be captured whenever required
+				--> kind of manual versioning
+			* The state of a blob at a given point of time
+			* A snapshot can be promoted as the current version,
+			   but it can be captured from the current version
+
+	
+Azure Storage Private Endpoints
+
+	* When a blob is accessed from a VM or from on-prem system, the 
+	   traffic always flows via the Internet
+	* Requirement:
+		If the blob is being accessed from a VM within a VNET, the access
+		to the blob must not be made via the Internet
+
+	* A private endpoint is a way to get the storage acc into the VNET and 
+	  assign it a private IP
+	* Azure create a NIC for the storage acc and give it a private IP
+
+
+Demo1:
+	1. Create VNET and a Subnet
+	2. Create a VM inside the Subnet
+	3. Create a SA, allow access to the SA only from this VNET
+	4. From the VM, access the public URL of the storage blob
+	5. From the NSG of the VM, block outbound internet access
+	6. Repeat step 4	--> Should not work
+
+https://karthik2153.blob.core.windows.net/container1/test.txt
+
+Demo2:
+	1. Create VNET and a Subnet
+	2. Create a VM inside the Subnet
+	3. Create a SA, disable public access to the SA
+	4. Create private endpoint
+	5. From the VM, access the public URL of the storage blob
+	6. From the NSG of the VM, block outbound internet access
+	7. Repeat step 5	--> Should work!!
+		
+
+
+	Queue
+	Table
+	File (Azure Files)
+		Path: \\karthik2153.file.core.windows.net\myfileshare
+		username: karthik2153		
+		password: iPCuTRWa32RUSR4GxQutAgpe8if/KI5xuVTLmVfqylaT5fpyGqSSnO7ct+Ca+plpr6OVQBW5RwOd+AStK2e1Ig==
+		
+
+	
+			
+
+	Azure App Services
+	---------------------
+		Web Apps
+			* An HTTP based PaaS offering from Azure to host web
+			   apps/web apis
+		
+			* Advantages:
+				* Application can be in any prog language
+				* Out of the box scaling, load balancing, custom
+				   domains, etc.
+				* Integration with DevOps (CI/CD), Git, GitHub,
+				   Azure Repos, BitBucket, etc...
+				* Deployment Slots
+				* Support for Containerization and Docker
+		Function Apps (Azure Functions)
+
+
+
+	Web Application	--> ASP.NET Core MVC Web App
+		How to deploy this app on the Azure cloud?
+
+		1. Create a Win/Linux VM
+			If you want full control over the underlying VMs
+		2. Using an App Service
+			VM creation
+			Installation of runtimes
+			scaling
+			lb
+			...
+			..
+
+
+	App Service		--> Your application
+		App Service Plan	--> Underlying computing infrastructure
+			Determines
+				a. OS
+				b. Number of VM instances
+				c. Size of the VMs
+				d. Scaling, Custom Domains, Deployment Slots
+				e. Pricing Tier
+					Free, Standard, Shared, Premium....
+					Will decide what App Service features
+					you get
+
+
+		The App Service plan can be changed as and when required
+			Scaling Up the plan
+			Scaling out the plan
+
+
+1. Create the app service using an App Svc Plan
+2. Deploy your application to the app service
+	
+			
+
+
+
+
+			
+
+	
+
+
+	
+	demo.html	--> v1
+	demo.html	--> v2 (cv)	
+	
+DAY-7
+=====================================================================================================================================================
+App Services
+	1. Create the app service 
+	2. Deploy an on-premise .NET Core app
+
+	Ways to deploy an app to an App Service
+		a. Using Visual Studio/VS Code (Web Deploy)
+			directly publish your app to an Azure App Service
+
+	Apps use config files to store app settings/conn strings
+	App then read these config settings from the config file
+
+	One of the good practices is to use the Configuration blade in the App Svc
+	via the portal to store app settings/conn strings instead of storing it in the 
+	config file.
+		Much more secured as the settings can be seen and can be modified
+		only from the portal
+
+
+	b. Using Zip Deploy method
+		a. Publish the app locally to a folder
+			dotnet publish -c Release -o c:\mywebapp
+		b. Create a zip archive of the build output
+		c. Using "az webapp deploy" command, deploy the app to the 
+		    app service
+			*If you are using Azure CLI from the Cloud Shell, 
+			 create a file share in the SA
+			*Mount the file share as a local drive on your machine
+			* Copy the zip package to the file share so that cloud shell
+			   is able to access it 
+				In the cloud shell, switch to the "clouddrive" 
+				folder to access the zip package
+
+	c. Zip Deploy --> by using the Azure Portal
+		Add "scm" between the webapp name and "azurewebsites.net"
+		https://karthik2153webapp.scm.azurewebsites.net/
+			Takes you to the "Kudu" portal
+				For administrative purposes
+
+
+
+	d. Git based deployment  (automated way)	--> CI/CD scenario
+		1. Link the app service with a VCS
+			* Go into the app service blade in the portal
+			* Left side --> Deployment Center, select source as Local Git
+			* Save the changes (the Git URL is available to clone)
+			* Copy the Git URL
+			* From the local machine
+				Go into the app folder
+				git init
+				git remote add myazurerepo <<URL of your Git repo>>
+			* Make some changes to the app and stage the changes
+				git add .
+			* Push it to the git repo
+				git commit -m "...."
+
+
+				* Local Git/FTPS credentials
+				* Choose app scope/user scope Git credentials
+				git push <<remote reponame>> <<branch>>
+
+			
+
+
+git config --global http.sslVerify false
+
+
+
+az webapp deploy --name karthik2153webapp --resource-group rg-karthik --src-path mywebapp.zip 
+
+DAY-8
+=====================================================================================================================================================
+Deployment Slots (Azure App Services)
+
+	a. Route a %age of traffic to the deployment slot
+		Prod	-	80%
+		Staging	-	20%
+
+			* By default 100% of the traffic is routed to prodn slot
+			* You can specify a %age of the traffic to be routed to 			   another slot
+			* Manual routing can also be done using the prod slot URL
+				Use the "x-ms-routing-name" query string in the 
+				prod slot URL
+				This query string takes a slot name
+					Ex:
+						x-ms-routing-name=staging
+						x-ms-routing-name=dev
+						x-ms-routing-name=self (prodn)
+
+	b. Swap the slots
+		During swapping if certain app settings/conn strings need to be
+		stuck to the slot, check the checkbox "Deployment Slot Setting"
+
+		Additional info on which settings are swapped and not swapped:
+		https://learn.microsoft.com/en-us/azure/app-service/deploy-staging-slots#what-happens-during-a-swap
+
+
+Function Apps (Azure Functions)..
+
+
+	Azure Queues (Azure Queue Storage)
+		Queue?	--> is a data structure which follows a FIFO principle
+		2 operations	--> Enqueue & Dequeue
+		2 Sides	--> Front & Rear
+
+	Why?
+		Asynchronous communication between applications
+		Cost effective way of implementing a form of async communication
+		on the cloud
+			Not an enterprise level messaging solution
+			Truly scalable messaging solution on Azure
+				Azure Service Bus Queues (ASB)
+				Azure Event Hub (AEH)
+
+		Kafka	--> From Apache	--> highly scalable
+
+		On Win	--> MSMQ service 
+
+
+	To use Azure Storage Queues
+		a. Create a storage acc
+		b. Create a queue
+		c. Create a sender and a receiver app to send and read messages
+		    from a queue respectively.
+
+		.NET Core	--> Client Libs.
+		NuGet Package: Azure.Storage.Queues
+
+		In azure queues, each message has a TTL (Time To Live)
+			By default = 7 days
+		This can be configured via SDKs, Command Line, portal
+
+
+	If the recv application reads the message, and if it does not delete the message
+	after processing it within 30 seconds, the message will go back in the queue
+
+
+	2 forms of communication
+		a. Synchronous
+			Both sender and recv has to be available
+			Sender MUST know the location of the recv
+			Sender has to wait for the response before it proceeds
+			
+		b. Asynchronous
+			Both sender and recv need not be available
+			Sender need not wait for the response before it proceeds
+			Sender need not know the location of the recv or vice-versa
+				MESSAGING
+			
+
+
+	Blob Storage
+		Block Blob
+		Append Blob
+		Page Blob
+
+DAY-9
+======================================================================================================================================================
+
+
+
+
+Queue Storage
+	
+
+Table Storage	--> Azure Cosmos DB
+		NoSQL solutions on Azure
+		Schemaless data	
+		Scalable
+
+
+		Key Concepts related to table storage
+			Row	--> Entity
+			Column	--> Attribute/Property
+				Each entity can have indifferent number of 
+				attributes
+
+			Each entity must have the following 2 properties/attributes
+				PartitionKey
+					Is a way to group entities
+					All entities having the same PK
+					will be stored on the same server
+					A single server can serve multiple
+					partitions
+					As and when required, Azure will 
+					load balance the partitions
+					
+				RowKey
+					* Is a value which uniquely identifies an
+					   entity within a partition
+					* Multiple entities can have the same 
+					  RowKey as long as they belong to a different partition
+					
+					=Primary Key
+
+
+.NET Nuget Package:
+	Azure.Data.Tables		--> for table storage & Cosmos DB
+
+	Create a table from the portal/SDKs
+
+	Create a .NET class implementing ITableEntity interface
+	4 props are mandatory
+			RowKey
+			PartitionKey
+			TimeStamp
+			ETag
+		other props are optional
+
+
+	While creating an entity, set the RowKey and the PartitionKey props
+========================================================
+
+Azure Function Apps (Azure Functions)
+	AWS		--> AWS Lambda
+
+What is an Azure Function?
+		* Its a cost effective way of executing "code(BL)" on the cloud in 
+		   response to some "event"
+		* One of Microsoft's serverless solution on the cloud
+Why?
+	1. SERVERLESS	--> "lots of servers"
+		* Servers are managed for you 
+			Abstracted 
+			No need to provision, install or patch
+
+		* Per Second Billing
+			* Pay only for the amt of time your code runs
+			* Monthly free grant
+
+		* Automatic scaling based on demands
+
+	2. Event Driven	--> Integrated with any Azure cloud service
+
+	Azure Functions Hosting Models (App Svc Plan)
+		a. Consumption Based Model (serverless)
+			Per Second Billing
+			1 Million Executions--> Monthly free grant
+
+		b. App Service Plan
+			Monthly billing
+			When there is already an app service in place
+		
+
+		c. Premium Plan
+			Pre-Warmed instances
+			VNET integration
+			Larger code execution duration (1 hour)
+
+		d. Docker containers
+			Customized env
+			Run anywhere
+
+
+
+Azure Function App
+	* Is a logical grouping of a number of Azure Functions
+	* Each Azure function within a function app has 3 things
+		a. Trigger		--> is actually what invokes the function/what causes the function to run
+				--> Each function must and can have only 1 trigger
+			Examples of trigger
+				a. Http Request
+				b. Blob upload
+				c. Queue message
+				d. Timer
+				c. Row being inserted/deleted in CosmosDB
+				....
+				...
+				...
+			The trigger will contain some "payload" which is 
+			accessible to the function
+
+		2. Input binding(s)
+			The source from where the function might want to 
+			"read" something
+			There can be multiple input bindings
+
+		3. Output binding(s)
+			The destination the function "writes" to
+			There can be multiple output bindings
+
+
+Demo:
+	1. An HTTP GET request contains 2 query strings named 
+	    "votername" and "age". (HTTP TRIGGER)
+	2. Azure Function1	
+		a. Checks to see if the request has 2 query strings 
+		    named "votername" and "age"
+		b. If no, the function returns 404 HTTP status code
+		c. If yes, function checks the age
+			if age >= 18
+				OUTPUT BINDING
+				the function puts a message into a queue named "eligiblequeue"
+			if age < 18
+				OUTPUT BINDING
+				the function puts a message into a queue named "noteligiblequeue"
+
+
+	3. When a message comes into "eligible" queue
+		Azure Function2
+			1. Reads the message of the queue
+			2. Create blob in a container named "eligiblecontainer" and
+			   write the content
+
+	4. When a message comes into "noteligible" queue
+		Azure Function3
+			1. Reads the message of the queue
+			2. Create blob in a container named "noteligiblecontainer" and
+			   write the content
+
+
+Input and Output bindings is that they are completely "declarative"
+		Using annotations/attributes specify the queue/blob name
+		to write or read from
+		The contents are automatically made available to the function
+
+
+	Azure function apps can be created from the portal/command line/VS 2022
+	using a ready made template
+		Used for some sort of prototyping
+
+	VS2022
+		You can test and debug the function app locally before deploying it
+		to an Azure Function App
+				
+
+
+		<button onClick="Add()">...
+		int Add(int x, int y)
+		{
+			return (x + y);
+		}
+
+
+	Function App		--> locally/globally
+		Function1 
+		Function2
+		Function3
+		OR
+	Deploy the local function app to Azure Function App
+
+	Function Apps need a storage acc.
+		a. To write logs
+		b. To configure input and output bindings
+
+	You can link a pre-created storage acc with a function app
+		Change the value of "AzureWebJobsStorage" app setting in the portal
+		under the function app configuration
+
+
+	1. Create a function app in VS 2022
+	2. Install the following nuget package
+		Microsoft.Azure.WebJobs.Extensions.Storage.Queues
+DAY-10
+=====================================================================================================================================================
+Azure Functions Use Case
+	
+
+3 Azure Fns
+	Az Fn1
+		Trigger: 	HTTP Trigger
+		What will the fn do?
+			a. Read 2 query strings named "votername" and "age"
+			b. If the query strings are not passed, then
+				Return 404 status code
+			c. If the query strings are passed, then
+				Check the age
+				If age >= 18
+					OUTPUT BINDING	--> Azure Queue (write a message)
+					eligiblequeue
+				else
+					OUTPUT BINDING	--> Azure Queue (write a message)
+					noteligiblequeue
+
+	Az Fn2 & Az Fn3
+		Trigger: 		Queue Trigger
+		What will the fn do?
+			Read the message from eligible and noteligiblequeue
+			OUTPUT BINDING	--> Azure Blob (create a blob)	Az Fn2	
+			eligiblecontainer
+			Write contents of the queue (the queue message)
+
+			OUTPUT BINDING	--> Azure Blob (create a blob)	Az Fn3	
+			noteligiblecontainer
+			Write contents of the queue (the queue message)
+
+			Az Fn2 and Az Fn3 will read the contents of a BLOB named 
+			common.txt inside a container named commoncontainer
+			INPUT BINDING
+
+			The blob common.txt will contain some message which will then
+			be written by Az Fn2 and Az Fn3 to the eiligible and noteligible
+			containers
+
+	Authorization Level
+		Function		--> Key is applicable only to a specific function within the func
+				      app
+		Anonymous	--> No key required
+		Admin		--> Admin access to all functions within the function app
+
+
+TODO:
+	a. When a blob is uploaded in the eligible and noteligible containers, create an Az Fn
+	    which writes the contents of the blob to an Azure Table Storage
+		Azure table named "voters"
+			PartitionKey (age)
+			RowKey (votername)
+			location
+
+	b. Send an email which contains the votername and the age
+		To:	<<your personal account>>
+		From:	<<your personal account>>
+=====================================================================
+
+	Azure Durable Functions
+		Creating stateful workflows
+
+		AzFn1	-->	AzFn2	--> AzFn3
+
+	Azure Logic Apps
+		used for creating workflows with a visual aspect and can integrate with external
+		services easily (connectors)
+
+	Algorithms and Flowcharts
+=====================================================================
+
+	ARM Template Deployment
+	ARM = Azure Resource Manager
+		
+		Ways to provision resources on Azure
+			a. Azure Portal
+				Manual Repetition of a deployment
+					Time consuming
+
+			Automated Deployment
+				b. Windows Powershell	--> Windows Scripting
+				c. Azure CLI		--> Cross Platform (powershell/bash)
+
+		Write a script(powershell script/bash script)
+		Run the script again and again 
+
+			Script	--> createvm.sh/createvm.ps1
+			Contain Azure CLI or Powershell commands to create a VM
+			Pass parameters to this script each time it is run	--> automation
+
+			Constraints in PowerShell and Azure CLI scripting
+				a. It is an imperative approach
+				b. There is no validation
+				c. No resource creation consistency
+				d. Resource dependencies need to be handled manually using
+				   an imperative approach
+				e. Is not IDEMPOTENT
+
+		createstorageaccount.ps1	(Windows PS Script)
+			contains the powershell command to create a storage acc
+			
+
+
+			d. ARM Templates
+	
+				
+			e. Client SDKs (.NET, Java, Python...)
+
+	What is an ARM template?
+		* Its a JSON document which contains the configuration and details about Azure
+		  resources to be deployed or configured
+		* Infrastructure As Code (IAC)
+			Used to automate release pipelines (CD pipelines) in a DevOps env.
+
+	Why?	
+			a. Declarative Syntax	--> JSON
+			b. Repeatable Results	--> It is IDEMPOTENT
+			c. Modular
+			d. Built in Validation
+			e. CI/CD Integration --> DevOps
+
+	Ways to create an ARM template
+		a. Manual		--> very rare
+		b. Deploy some resource using the portal and "extract" the ARM template
+			Then make changes to the ARM template and keep deploying it
+				At the RG level
+				At the resource level
+					2 files
+						a. template.json	--> ARM template
+						b. parameters.json	--> parameter file
+		c. Download a pre-created ARM template from Microsoft's Quick Start Git Hub acc.
+		d. Using Visual Studio
+		
+						
+
+
+	Azure Key Vault
+		
+============================================================================================
+ARM Templates
+	
+
+	How to provision an Azure Storage using an ARM template	
+
+
+	Structure of an ARM template:
+	{
+
+		"parameters"
+			Specifices the deployment parameters whose value(s) may/may not come
+			from the parameters file
+			Each parameter can have a default value. The default value will be used
+			if no parameter value is explicitly supplied from the params file
+		
+			"defaultValue"	--> will be in the template file
+			"value"		--> will be in the param file
+
+	
+		"variables"
+			are used within the template whose values may come from the 
+			parameters
+			Similar to local variables inside a function
+			Is used to reuse some value repeatedly inside the template
+		"resources"	(MOST IMPT)
+			Details about the Azure resources to be provisioned
+				Each resource will have a "type", "name", "location"
+				The values for these may come from internal variables
+				or parameters
+
+
+	Deploy the ARM template using Azure Powershell/Azure CLI
+
+	PowerShell command to deploy an ARM template:
+	
+	New-AzResourceGroupDeployment -ResourceGroupName rg-karthik `
+	-TemplateFile deploystorageaccount.json `
+	-TemplateParameterFile deploystorageaccount.parameters.json `
+	-Mode Complete
+
+	Deployment modes
+		a. Incremental	(default)
+			Resources which are not specified in the ARM template, but already
+			exist in the RG, will not be touched/affected by the deployment
+
+			Resources which are specified in the ARM template, but do not already
+			exist in the RG, will be created additionally
+
+			Resources which are specified in the ARM template and also exist in the 
+			RG, their props will be modified if specified in the ARM template,
+			otherwise the resource is not affected
+
+			RG1
+				A
+				B
+				C
+
+			ARM
+				Deploy X and Z
+			RG1?
+				A, B, C, X and Z 
+
+			RG1
+				A
+				B
+				C
+			ARM
+				Configure B
+				
+			
+		b. Complete
+			Whatever resources are specified in the ARM template are only 
+			deployed
+			Resources which pre exist in the RG, but not specified in the ARM template
+			will be removed
+				-Mode Complete	(default is Incremental)
+
+
+TODO:
+	* Create RG using Portal
+	* Create a Win/Linux VM using Portal in the RG
+	* Create a storage acc using the portal in the RG
+	* Extract an ARM template for the RG
+	* Delete all the resources in the RG
+
+	* Create a new RG
+	* Using Azure Powershell, repeat the same deployment in the newly created RG using the ARM
+	   template
+===================================================================
+
+Azure Key Vault
+	* Is an Azure Service for "secret management"	--> securely store and acess secrets
+	* Secrets
+		Passwords, DB Conn strings, API keys, encryption/decryption keys, certificates, etc.
+
+	* Why?
+		* As a vault owner, you have full flexibility when it comes to administration of the vault
+			* Setup auditing logs
+		* Versioning
+		* Integrates with all Azure Services easily
+		* Is based/uses Azure AD authentication
+
+
+
+1. Create a vault	--> using portal, Powershell, CLI, SDK
+2. Store some secret in it
+3. Create and deploy a Web App to an app service and let the web app access the secret from the vault
+
+
+https://karthik2153keyvault.vault.azure.net/secrets/mysecret/0a5f43eebca5480ea62faeb5eae9302d
+
+/subscriptions/42984101-8d61-4f2e-8938-8c92b5d81b8b/resourceGroups/
+
+
+	
+	
+				
+			
+			
+	}
+
+		Add();
+		function Add(x, y)
+		{
+			if(x == undefined)
+				x = 0;
+			var localx = x;
+			var localy = y;
+
+			var message = "HELLO";
+			var message1 = message;
+
+		}				
+
+
+
+	
+
+	

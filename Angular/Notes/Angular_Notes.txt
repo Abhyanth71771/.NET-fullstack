@@ -1,0 +1,1019 @@
+Angular Cli:
+	1.Rad(Rapid application devolopment) tools-->generates angular artifacts,builds unit testing,etc
+	2.built with smart coding practices
+	
+Install Angular cli:
+	1`.cmd
+	2.np install -g @angular/cli
+	3.cross check the installation by executing the command: ng version
+
+
+All angular command begin with 'ng' prefix
+
+
+
+AngularJS vs 		 Angular
+
+legacy        		new version
+
+version:1.x   		version started from 2.0
+
+completely based	based on TS
+on js
+					version:2.0,4.0,5,6,7,8,9,10,11,12,13,14.0
+
+google releases a major version every six months and minor version every 3 months and patch versions every 2 weeks
+
+There is major architectural change from angular Js to angular
+
+
+
+Creating an angular application:
+	run the following cmd: ng new<<application name>>
+	do this each time you want a project
+	all the angular dependancies are in the folder named node_modules
+	application source code will be in the src/app folder(the code we create)
+	All the components must be under src/app
+		.component.spec.ts--> used for unit testing(unit testign code) 
+		component.css-->styles of th component
+		.component.ts-->logic and metadata of the completely
+		.component.html-->template/view pf the component
+	
+	Running the application: ng serve starts web app in port 4200  
+	
+	
+	<app-root></app-root> is the html selector of the root component this is generated auomatically
+	anythig inside app root will be ignored and you can only see glimpse of it when you refresh it but 
+	you can add anything before or after app root 	it will get executed but angularwont care about it
+
+
+
+Any component created will be the child of the root component so to display child component its html tage should be put 
+inside the root  component(app.component.html) and not index.html
+		
+	
+	
+Creating Componets
+==================
+1.use the following command to create a new component 
+				ng generate component<<component name>>
+			
+			
+
+
+In angular each component will have its own styles inside its own css files
+						Angilar uses a technique knows as 'view encapsulation' which prevents clashing
+to add global styls to a angular app reference the styles inside 'styles.css' 
+		styles.css will be in src folder "@import '../node_modules/bootstrap/dist/css/bootstrap.css';"
+	
+		
+
+DAY-2                             DATE:10/14/22
+================================================================================================================================================================
+
+Web pack is a bundling(combing) and minification(reduce size) tool  for js and css files
+
+
+Angular Modules
+===============
+	What?--->An angular module is a logical grouping of components pipes,directives
+	Why?--->Allows lazy loading (Improves Initial page lad time)
+	similar to resourse groups in Azure
+	logical grouping
+	each anguar app has a root module The root module contains the root componet and its the first component to be loaded
+	A root module can have child/feature modules and each feature module can have its own pipes/directives and components
+	Having a child coponent is not compusory but thes no logical grouping done
+	all the coponents(ts file) under one root module is converted to one JS file doing this huge files mite take time to load as all the coponents
+	are uder 1 JS file this is Eager loading
+	
+	Now lazy loading is when modules are loaded only when required only the root module is eager loded
+	
+	Why modules:
+			logical grouping
+			each module can be loaded when required and not all at once
+	if and only if there is feature modules we can implement lazy loading
+		We can configure lazy loading
+	
+	
+TS perspective of angular component and modules
+==============================================
+	An angular is a TS class 'decorated' with @Compoent() decorator which makes it a component 
+	
+	An angular module is a TS class decorated with a Ts class decorated with a @NgModule()
+	
+Decorator
+=========
+when we use a component Angular wont understand it because its just a class now when add a @component to it there are some pre-defined 
+styles/selector which angular maps to that particular component
+so adding a decorator will make angular understand that its a component 
+
+==================================================================================================
+@coponent decorator will have 3 props:
+	1.selector --->HTML tag of comp
+	2.template(in-line template)/templateUrl(complex templates use url's) ---->defines the view
+		4.styles: --->css styles
+=====================================================================================================
+@NgModule() props:
+decalrations:contains components that are directly part of the root modules
+providers--->
+bootstrap--->specifies which is the root component of the application 
+	
+
+Angular app bootstraping process"
+================================
+1.Code inside main.ts executes first
+2.The bootStrapModule() methood is called which calls the constructor of the AppModule class
+in the app module it checks for the root module under the decorator @ngmodule and then goes to bootstrap hich calls the app component
+3.The const of the appComponent class is called before this it checks the index.html and sees if the app-root selector is used because bootstrap checks for the
+component decorator  in case the selector is not used in the index.html then the constructor of app component is not called and the bootstrap process is terminated and
+the angular framework in the browser gives an error
+4.The app components's HTML is rendered
+	platformBrowserDynamic-->calls angular in the browser
+	
+	
+==================
+Angular Components
+	A visual enitity which user can intract with
+	Component are supposed to display data(fetching is not the job of the component)
+==================
+
+==================
+Data Binding
+	A technique to tightly associate the model with the view in such a way that when the model changes 
+	its refleced in the view and vice-versa
+	
+	Model is the data the source is not a concern for the .html file
+	
+	TYPES:
+		ONE-WAY---> 1.flow of data is from model(TS code) to View
+		            2.used for read-only cases
+					3.can be achived by using Interpolation{{}}/Using property binding[]
+											  anythig within the curly brace will be executed by angular eg:{{1+1}}
+											  
+											  
+		Event binding:--->Handling Dom events(associating the dom event with handler function)
+								<button(click)='HandlerName()'>Click Me</button>
+									the handler name much be a public function inside the components ts file and inside the component's class
+								<in>put type="text"(change)='handlechange()'/>
+		
+		Two way:---> is a combination of property binding and event binding			[()]
+					
+
+	
+
+Eager loading & lazy loading
+create a component name 'greeeter' 
+			render it from the root component
+			the component must display the following strings in its template
+			The data must contain 3 strings with the values 'hello','welcome'and 'goodbye' respectively
+			
+			display each string inside a div tage using interpolation syntax
+
+
+ng serve --port <<Port number>>
+
+pollyfils.js--->legacy bridge
+
+46:49
+
+===================================================================================================================================================================
+DAY-3 17-10-22
+
+
+
+One way binding
+	Property binding[]=when binding to a dom property
+							eg:ts file=imagepath:string='c:\myimage.jpg'
+							view:
+							 <img[src]='imagepath'>
+							 <a[href]='somelink>click</a>'
+							 
+	
+	prop binding                         vs interpolation
+	<img[src]='imagepath'>					<img src='{{imagepath}}'>
+	to set any eement to non string values										interpolation is like a shortcut of propery binding(interpolation is converted to property binding bts )
+
+The view and the ts file is tightly bound so use property bounding to do get element by id and so on
+
+for a button the attribute disabled is by default true and it cannot be	changed to false hence we use property binding to play with the values
+
+===============================================
+TWO WAY BINDING
+											
+	a directive is a custom attribute created in angular which can be applied to html elements to change thier behaviour
+	can be used with all input element		
+					eg:checkbox,radio buttons,etc
+	input type='text' (input)=''fun($event)/[(ngModel)]="variable"
+										$event is used to give a set of properties of that particular event .target.value will give s the value
+	[(ngModel)]="variable"---->when ever user enters any input that vlaue goes inside the variable
+			when ever we are using ngModel we have to import FormsModule and this needs to be imported inside the root module
+			
+			import{FormsModule} from '@angular/forms' and then inside impots type FormsModule
+			ngModelautomatically binds to the type of buttons or input type
+
+Assignment1:create a component       enable or disable <add a checkbox(initially checked)>
+										<button>-->when the check box is unchecked the button must be disabled and 
+										when the check box is checked enable the button
+										
+Assignment2: create about component   enter password
+									<input type password>
+									<empty span>-->if the no of characters in the password feild
+																								is empty display empty
+																								is between 1-3 display weak
+																								is between 4-8 display strong
+																								is between 9-15 display very strong
+Assignment3: create a component       select a coutry
+									<dropdown list of countries>-->initially when the component is loaded display some countries
+									<dropdown list of states>---->when user selects a coutry then this dropdown should show the cities of that country
+
+Assignment4: create a component       employee names
+										<div element>--->display 10 employees naes each employee must be a different div tag 
+										add a buttton for each employee title of the button must be'Delete<empname>'
+										when the button is clicked that employee must be deleted
+										
+										
+									  add a new employee 
+									    <text box><button add>--->when th button is clicked the enterd emp name must be shown
+										
+Assignment5: Create a component       parent 									child 1							child 2
+											Enter a number  <button Square>           Square Compoent				cube component
+															<button cube>				<div element>					<h3>
+																				when square is clicked				when cube is clicked 
+																				data should come to this 			data should come  to this child
+																				child
+																				
+Assignment6:  Create a component      Parent(welcome screen)				Child component(login component)
+											<div>					          <user name input>
+																				<password input>  <button sign in>
+																				if  password is CT then the div in parent should display the username 
+									  
+															
+		 							
+===============================================									
+ANGULAR'S BUILTIN DIRECTIVES
+																								
+	1.ngIf--->adds or removes a dom element based of some conditions (if true dom elemet is added else dom element is removed)
+			  this is called as structural directive as it aler the structure of the webpage
+				Syntax
+						<element *nglf='condtion'></element>
+							eg:<p *nglf='10>2'>hello</p> if condition is true then the p element is shown else p is not shown 
+	2.ngFor--->also a structural directive, it clones the element on whcih it  is applied based on te no of items in the collection\
+	           used to iterate a set of elements in an array it will create a copy of the html element on which it is applied
+			   use cases:generate list of in a drop down list
+			   
+			   Syntax:<element *ngFor='let variable of arrayname'></element>
+						<p *ngFor='let bname of booknames'>
+						   {{bnames}}
+						   </p>
+	3.ngStyle --->attribute directive
+	4.ngClass---->attribute directive
+	ngSwitch----->attribute directive(changes behaviour)
+	ngSwitchCase->Structural directive()
+	ngSwitchDefault->Structural directive 
+	
+================================================
+COMPONENT COMMUNICATION
+1.Parent to child communication-->Steps
+										1.Create a public daa member in the child component decorated with @input() decorator
+										2. The parent component will then use a property binding syntax to pass data into the child  component
+													->this has to be done from the template of the parent component when it renders the child component
+										3.@input needs to be imported fro @angular/core library
+										
+									
+2.Child to parent communication-->
+									1.create a public data member (must be of type event emitter in the child decorated with @output decorator)
+									2.the child has to 'emit'that custom event some how using the 'emit()' methood of the event emiter class and 
+									pass data to the parent
+									3.parent will use an even bidding syntax to register a handler with the event and get the data from the child 
+									Event emitter must be impoted form @angular/core 
+									  public loginevent: EventEmitter<string(datatype returned by the emiter)> = new EventEmitter<string>();
+									  this.loginevent.emit(this.result);
+3.Sibling communication
+	
+	
+	
+===========================	
+Event tunneling(Can be done only using add event listener) top lvl to lower lvl an bubbling	 lower lvl to the top lvl
+===========================	
+	
+	ng new citiustech --application=false
+	ng generate application Name--->creates a new progest in the above folder and we can add multiple such comands each command will have its 
+										own root component
+	
+	
+	
+	<div *ngif='condt';else #showpara></div>
+	<ng-template #showpara>
+	elements
+	</ng-template>
+	
+	
+===================================================================================================================================================
+DEPENDENCY INJECTION
+		DI, is a design pattern and mechanism for creating and delivering some parts of an application to 
+		other parts of an application that require them
+		increase flexibility and modularity
+		
+		loose coupling,easy to test
+		
+		
+		Two main roles exist in the DI system: dependency consumer and dependency provider
+		@Injectable decorator to show that the class can be injected.
+		At the Component/ngModule level, using the providers field of the @Component decorator
+		
+		@Component({ … })
+class HeroListComponent {
+  constructor(private service: HeroService) {}
+}
+
+Service is a broad category encompassing any value, function, or feature that an application needs. 
+A service is typically a class with a narrow, well-defined purpose. 
+
+ng generate service heroes/hero---->command to generate services
+
+
+===================
+PIPES
+
+	(Pipes are simple functions to use in template expressions to accept an input value and return a transformed value
+	Pipes are useful because you can use them throughout your application, while only declaring each pipe once.)
+	
+	
+==========================================================================================================================================	
+DAY3
+	
+PIPES
+		Pipe is used to transform data in the HTML template(Foratting date,number,string etc)
+		always used in HTML template and not  .ts files
+		can be ued with property binding as weell as interpolation
+			SYNTAX:
+					{{expression | pipename}}
+									--->the expression on the left side is the input to the pipe
+									    the expression is transformed and replaced with the transformed output
+		pipes can be 'chained'
+					{{expression|pipe1|pipe2|pipe3|...}
+		Angular has builtin pipes and custom pipes
+		pipe name sare all lowercase
+		
+		
+=====================================================================================================================================================================		
+Assignment1: create a component   select a currency note
+									<<drop down list>>
+													countries:
+														
+									<P>
+									display some number</P>
+								if user selects select then its should not display any currency
+
+Assignment2: create a component   <textbox>day of the month
+									<textbox>day of the month
+									<textbox>day of the month
+									
+									select a date format:
+									<radio button> full date
+									<radio button> short date
+									<radio button> medium date
+									
+									<button>show date
+									
+									<div>--->this element must be shown whenthe user clicks on the button and display the date in the format 
+												of the radio button specified
+
+Assignment3: create a component    <Text box> enter marks of TS
+									<Text box> enter marks of Angular
+									<Text box> enter marks of .NET Core
+									
+									default value must be 0 in all the boxes
+									
+									<p>show the total marks here by adding all the marks
+									 
+									 <p> display the average
+									 
+									 <h1> display the percentage of marks
+
+Assignment4:  create a component   create a public data member in the component class(public instock:boolean=false) use 2 way data binding and bing the checkbox 
+										to instock
+									create a div element display the value of Instock
+									from google download 2 images tick and cross 
+									store  the images inside the asset folder (find the purpose of asset folder)
+									 
+====================================================================================================================================================================
+
+		pipe chaining:
+				{{tody|date|titlecase}}
+	
+CREATING CUSTOM Pipes
+=====================
+	a pipe is a TS class with @Pipe() decorator
+	A pipe cn be created using command	using ng generate pipe << pipename>>
+	The pipe's transformation logic is written inside a 'transform()' methood inside the pipe class
+	Angular will call the transform() ,methood each time whenever the ppe input changes
+						-->this is a disadvantage because if the logic under transform is heavy then this will get executed each time you change the input
+							so we will have to keep the transform logic simple
+	Every pipe implicitly takes only 1 input but a pipe can also take multiple inputs {{amt |currency:'INR':'YEN'}}
+	when we generate a pipe it will only create .ts files
+	
+	
+===================================================================================================================================================================
+DAY-4
+
+ANGULAR SERVICES-->reusing application wide logic across components
+=================
+what	
+		a ts class  with some logic which needs to be shared across components in an angular app
+		a ts class is decorted with @injectable() decorator
+		is injected into components pipes directives via angular's built in DI mechanism
+Why
+	reuing of app wide code without rewriting code
+		logging
+		rest api calls
+		HTTP request/response interception
+	component communicationeasier to unit test as its injected via DI
+
+SOAP-->
+RESTFULL SERVICES
+
+Pipes are reused across templates(HTML fils)
+but services can be re-used across .ts files
+
+DI-FW(dependancies injection frame work)-->creates objects on its own
+
+Routing
+
+
+	* Routing is a technique to implement navigation in a Single Page Application
+	* In an Angular application, routing is a way to navigate between components, based on
+	   some URL pattern
+		Example:
+			* if the URL is /home, then show the HomeComponent
+			* if the URL is /about, then show the AboutComponent
+			* if the URL is /search/20, then show the SearchComponent and read the 
+			   value 20 in the URL
+			* etc, etc...
+
+
+===================================================================================================================================================================
+EXTRA
+
+ANGULAR APP COMPILATION:
+
+	1.JIT(just in time)
+			The compilation process takes place inside the browser before the angular app is bootstrapped
+			devolopment mode
+			we cannot see the .js files as they are created during compilation
+			ng serve is used here
+			
+	2.AOT(Ahead of time)
+		the compilation process takes place before the angular application is bootstarapped
+		ng serve --prod is used here
+		used in production mode
+		
+package.json
+		DEPENDENCY 
+				required to run any angular app irespective if its client or devolopment
+		devDEPENDENCY
+				required only during devolopment
+				
+ng g c <<component name>> --skip-tests--module<<module name>>-->creates a component nder that feature module
+	--flat can be used to add folders directly to the src/app folder
+	ng g c <<component name>> --inline-style--inline-template-->only creates .ts file and not anyother fies
+	
+NAming conventions(screenshot)
+
+
+angular.json contains configs for angular CLI its on per project basis
+
+angular uses a mechanism of change detection
+
+Advantage of putting the images in assets folder		
+		1.This asset folder is included when you build the appication
+		2.easy to reference the images and path remains constant 
+	
+Browser Module:->is required to load angualr
+
+$event:-> contains the information about component  /event
+			same event handler can be used and the $event can ve used to differentiate betwnn the 2
+			
+Template Refrence Variabler:-allows refrencing a portion of a template in another portion of the template
+		inside the html file for any element add a #vaiable_name and then in someother element we can user that variable_name
+			to get the value of that element
+		Template refrence can be used only withing the current template it cannot be used not even in the .ts file 
+		I have to use variable_name.value to refrence the value
+Event Emitter in child to parent communication acts like a notification to the parent @output can be used only on objects of type event emitter
+@viewChild() and ViewChildren()-->for passign of data only @input or @output can be used but for component  communication	
+	these also can be used
+	used to acces dom elements from its ts code viewchild->sngle first matching element viewchildren()->array elements
+	can be used to access propertie sof child comoponents as well
+	used in parent to intract with child
+	ElementRef class is a wrapper around a dom element
+	
+	Steps To Use ViewChild & ViewChildren()-->
+												In the ts class crete a data member of type elementref
+												decorate the ata member with @ViewChild()
+												use the dom element  and send it as a parameter to the decorator either by using template refrence variable
+												or if theres a single html element  give that element as reference
+												ngAfterViewInit()-->will be called every time ViewChild is called its a component lifecycle hook
+												.nativeelement->gives us the element
+												view children->rturn the querry list of ll the components
+Component Directive->is a spl kind of directive which has a template	
+						all angular components are 'component directives'
+						every component is a directive but every directive is not a component
+<*ngIf='condition';else templatename><>
+	<ng-tmplate #templatename>
+	<ng-template>
+<*ngIf='condition ;then template1;else template2><>
+<ng-tmplate #template1>
+<ng-tmplate #template2>
+
+
+ng for has a index variable which gives us the value based on zero based indexing i=index,o=odd,e=even
+	 Track by in ngFor:-tells each element in angular in the collection how each element must be tracked without track by angular re-renders all the elements 
+		How to do this:
+							create a fun wihch return a unique value each time its called
+	
+						trackby:uniquenumber							
+	Custom Directives:Attribute 
+						it can be either attribute or custom directive
+							Steps:
+								1.create a ts class and decorate it with @Direcive() decorator
+								2.declare the directive in the declaration sections of the AppModule
+								use the directive in the component's template
+								 ng g d <<directive name>>
+						when ever an event occurs  that host element
+						if you want to activate any directives based on any custom event then in the file of the custom directive add a @hostListener(here give that particular event) 
+						.nativeelement-gives access to the underlying dom element
+						<p directive_name[message]=''></p>-->just like components directives can also have input properties
+							just add @input() decorator in the directive ts file
+						
+					Structural Directive:
+						create a directive class
+						import ViewContainerRef and Template Reference-->builtin services which needs to be injected
+						viewContainr ref-->virtual loc in dom where the embedded view is created will contain a template
+						 
+										
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+DAY-6		
+====================================================================================================================================================================
+difference between pure and impure pipes
+
+
+
+
+decorating the class with @injectible will automatically makes it participate in angular's dependancy injection	mechanism
+providedIn: 'root'-->this means one instance is share across applications so its singleton 
+
+suppose url-4200 is opened twice then 2 instances are created because there are 2 users and its independant 
+OBSERVABLES and RxJx
+====================
+	OBSERVABLES
+	============
+		'STREAM' of data in which data flows over a period of time
+		based of 'observer' pattern 
+		an application 'subscribes' to an observable and is 'notified' when data comes into it 
+				then the application 'reacts' to it
+		this is known as 'reactive programming'
+		publisher subscriber type programming
+		angular uses observables in forms ,routing,http communication 
+		observablescan be used without angular also 
+		subscribe=one http request
+	
+	Reactive Extensions for JavaScript
+	==================================
+		introduced by MS
+		is a set of libraries which is used to implement 'reactive programming' using a observable sequence known as'OBSERVABLES'
+		for 
+			.NET ist Rx.NET
+			python is RxPy
+			Java is RxJava
+
+Creating observables
+	1.import observable <T> from rxjs libraries\
+	2.create an observable stream using an RxJs operator or by using the observable <T> class
+	3.subscribe to the stream and take actiong when data comes
+	4.unsubscribe from the stream if required
+Ways to create observable
+	a.using the observable <T> constructor
+	b. Using RxJs operators	
+
+to push data to the stream 
+	use the next methood()	
+To remove a stream we call the complete() methood if this is not called then the stream remain in the memory always a good practice to call complete()
+	
+	
+subscribe() takesh 3 callbacks:
+	success callback:called when server calls next()
+	error callbaclk:called when server calls error()
+	completed callback-->called when server calls complete()
+
+Steps to Unsubscribe():
+		1.when the subscribe() function it returns a subscription objects
+		call unsubscribe() on that subscription object
+
+
+if we call complete() we can add a function to the callback and then perform any action in that function but we cannot do this in unsubscribe()
+	
+	
+	flavours of observables
+		observable
+		subject
+		behaviour subject
+		relay subject
+		async subject
+
+
+	
+In the example each time we hit subscribe a datastream is created 
+unicast-->1 subscriber 1 stream 
+
+A client can call unsubscribe from the stream by calling unsubscribe() methood on the stream
+once unsubscribe() is called client will stop reciving date from the stream
+
+	
+	
+	
+===================================================================================================================================	
+promise and observables-->Promise is one time/one task only observables are used for a stream of data
+						  Promise cannot be cancled but observables can be cancled
+						  Promises are eagerly loaded but observables are lazy loaded
+						  In promise data transformation is to be done explicitly but in observables there are operators to do that
+===================================================================================================================================
+
+
+
+Assignment1-->   create an observable component 
+								2 button <get prime no clickable once>   <cancel button initially disabled>		<<scroll div tag>>
+										<get prime no>	<cancel button>>		<<scroll div tag>>
+										
+										
+									create an observable which emits a prim number every 5  seconds 
+DAY-7								
+=====================================================================================================================================================================
+
+ROUTING
+=======
+	Client side routing-->all the routing is written by us and a new page is rendered without us sending a request to the server
+				Angular implements client side routing --->routing logic written in javascript
+			
+			
+	Server side routing-routing logic writen by server we just put the hyperlink and send request to server the server then does everything and a new page is opened
+
+
+	ANGULAR Routing
+	==============
+		it works by checking the URl pattern and based on a pattern ,a specific page is rendered
+			eg:if the url is /home render home
+				if the url is /about -->then render about
+				if the url is /search/10 -->then render search component and read the url parameter 10 and take some action
+				
+		Steps to implement routing in angular:
+				2.Configure the routes
+				1.decide on the url patterns
+					http://localhost:4200/<<anything else>>
+					
+					the common part is http://localhost:4200 will never chnage andis known as base url the url after this only chnages 
+					angular's logic starts after what comes after 4200(in ths case)
+					
+					to configure the routs create a file name with app.routes.ts inside the src/app folder
+					**-->wild card route meaning anything else other than the given links
+					angular route config is a collection of 'route' objects where each route object will have 2 props named 
+											'path'-->is the url pattern(which starts afte the base url)
+											component-->is the component to be shown
+					if a path as parameter then we should indicate it with a colon :var_name
+					
+					for roon take a parameter which has to contain path and the where to path and the for root injects many services in the route config and returnsa new
+					routing module with the services and the route config this can now be imported in the root module hence 'export default' is used
+			************************************************************************************************************************
+			only one default export is allowed and the person imorting this can give it a name but named export the person importing 
+			it should use the same name as the person exporting it
+			default export--->import something from ''approutes'
+			named export-->import  {routeconfig} from 'approutes'
+			*************************************************************************************************************************
+				3.import the route config inside the root module
+				4.create a placeholder inside the app omponent html file by adding a router outlet directive this directive is apar of the router module
+						it is lie a placeholder where the routed components will be shown
+						        <router-outlet></>
+					add a defaulkt route with/ so that hoe component is shown when the url is http://localhost:4200
+			
+		CREATING ROUTING LINKS FOR NAVIGATION
+		=====================================
+			common way to navigate:
+						<a href>link test</a>-->by default it will create a server request
+						to avoid this angular provides a router link directive which can be applied to the anchor element to prevent the server request
+						
+DYNAMIC COMPONENTS:components whose selector are not mentioned anywhere but are rendered(added)when the user clicks on it
+		
+		Reading routing parameters
+		===========================
+		if a route has parameters ,a component can read it to take some action
+		 for a component to access the the route parameters we must use a service named 'Activate Route'
+				TWO WAYYS TO ACHIVE This:														-->this provides info about current route with info like
+																												1.url
+																												2.the route parameters
+				there is a service named activated route we need to import it and use as a type of variable inside the constructor of that required component
+				and then use this keyword and access al the info provided by 'Activated route
+				========================
+						A.Using 'sanpshot.params'-->returns the value of that paramater
+						b.using 'params'-->returns an observable and this gets subscribed to that parameters datastream
+						
+						
+	TYPES ON NAVIGATION
+	===================
+	
+	a.Declarative-->using routerlink
+	b.Imperative(via code)
+			inject 
+			
+			
+			
+COMOPONENT LIFECYCLE
+===================
+	is the hase from the point the component instance is created till the point its destroyed
+	
+	Angular provides life cycle methoods whicha devoloper can use to execute some logic in a specific phase in the lifecycle
+			eg:
+				ngOnInit-->when a component is first created best place to read route params or make api calls
+				ngOnChanges
+				ngAfterView
+				ngOnDestroy-->is called before angular removes the component instance from the memory best to perform clean up operations like unsubscribing
+				ngDoCheck
+	each of these methood belongs to an interface
+	eg:ngOninit is inside oninit interface
+
+	HOW ROUTING is efficient
+	
+	
+DAY-8
+====================================================================================================================================================================
+@Viewchild and @ViewChildren and Template Reference Variables-->Parent child Communication
+
+NESTED Routing
+==============
+	additional path is added to the base+page path 
+			base:http://localhost:4200
+			page path:/friend
+			aditional path:/friendsinfo/friend1-->friend1 is a parameter to friendinfo 
+			
+			overall path:http://localhost:4200/friend/friendsinfo/friend1
+			
+	so therefore we need to add a router path in the app.component.html as well as fried.component.html so that friends can also route to freindsinfo
+
+LAZY LOADING
+============
+	by default all the modules in anguar is eargerly loaded
+	
+	lazy loading is a techinique which loads module on demand 
+		in other words the JS chunk for a specific feature module is loaded only when user requires it 
+		
+	Improves page load time	
+		reason is feature modules which might not be required initially the JS code for those modules will not be loaded
+		
+	1.Every application has one or more features
+	2.In angular you can think of each feature as an angular module(feature module)
+			eg:a calculator app designed in angular	
+						1.Addition module-->its a feature module
+						2.subtraction-->its a feature module
+	3.all feature module are a part of root module
+			each feture module can have its own set of components
+	4.10 feature modules 10 JS files and this will be lazy loaded
+	
+	
+	
+	CREATE FEATURE Modules
+	======================
+	1.ng g m <module name>
+	2. create components in all the modules	
+				ng g c addition--module addition or ng g c module_name/component_name
+	3.when using a component from a feature module into the app component the feature module
+		must be imported in the app module
+		1.In the app module's @NgModule decorator add the feature modile in the imports section
+		2.by defult when a component is created is created inside a feature module its is PRIVATE to the feature module.This means the component can be used inside any component 
+			which is a part of feature module
+		3.to make the component inside the feature module be availabe to the root component the component must be exported ie:the feature module must 
+		be explicitly 'EXPORT' via the export property
+	IMPLEMENT LAZY LOADING
+	======================
+		1. Create a route configuration to lazy load each feature module
+			Example:
+				http://localhost:4200/addition	--> Load the AdditionModule
+				http://localhost:4200/subtraction	--> Load the SubtractionModule
+
+		2. Use loadChildren() in the route config to load the feature modules on demand.
+			Example:
+			{ 
+						path: 'subtraction',  
+						loadChildren: () => 
+                				import('./subtraction/subtraction.module')
+                            				.then(m => m.SubtractionModule) 
+				}
+
+		3. For each feature module, create a route configuration which will decide which component
+			to be shown when the module is loaded
+			Use RouterModule.forChild() method to merge this route configuration with the 
+				application's route configuration
+
+
+				Each feature module will have its own route configuration which will then be
+					merged with the root route configuration
+
+		4. Include the child routes (forChild()) inside each feature module
+		
+
+pipes:When ever there is a pure change to the input a pipe is called
+	
+	TYPES OF PIPES:
+		1.PURE:
+			by default all the pipes(custom and built-in) are pure
+		2.IMPURE
+		
+
+
+Anular Content Projection:-
+	Is a pattern to project or insert into a component
+	the content is specified between the open and close tags(selector) of the component
+	Why?
+		Reusable content can be supplied from outside the component instead of hard-coding it inside the template
+		you can create  wrapper components which provode some kind of static layout inside which any component can be displayed 
+		
+	To allow a component to 'project' the outside content inside it we use the ng-content directive
+	if we use ng-content twice the latest one is projectes and rest of them se ignored 
+		Types of Content Projection:
+			1.Singe slot
+				ng-content can be used only once
+			2.Multi Slot
+				ng-content can be used multiple times and each ng-content will be  a slot 
+				any an0content having no names is the default slot 
+					there can be only one slot
+				Steps:
+					1.give a label to the content that needs projection in the parent component
+					2.use the same label in the child component <ng-content selector='[label_name]'></>-->this is a named slot
+
+HTTP COMMUNICATION IN ANGUAR:
+=============================
+1.import HttpClientModule in the app module
+2.injest the hrrpClient Service intp the component/service from where HTTP calls needs to be made
+3.use the methoods of http client to make get pist put r delete requests
+4.Subscribe to the observable returned by the methoods to get the data from the external service
+
+
+components must not make http request directly
+components must use a  service and the service must make HTTP request 
+
+CRUD(Create,read,update delete )operation
+
+
+install jsoncreate a .json anywhere in the application and put some json data inside it
+
+
+HTTP cliet service provides a methood to make get put etc to an external service
+		wach methood is asynchronous and returns a observable
+		
+	GET:
+	get<T>(url:string):Observable<T>
+
+
+
+Angular Forms:
+==============
+		what?:
+			A form is a way to capture user input in an application
+			Each form consists of one or more 'form feilds' 
+				form feilds are HTML input elements where user enter input
+		Why?:
+			Each form can be posted/sub,itted to some backend so that the entered info can be persisted
+			And info can be usd later
+			
+			Before sending or posting  or submitting the form data to the backend the inputs can be validated
+				validation must provide instant visual feedback to the user
+			
+		The template and the .ts file is linked using data binding
+		
+		the .ts file is used to read the data performs some logic f needed and send it to the database
+		
+		Types of forms:
+		===============
+			A.Template Driven Forms-->usually prferred if ther are fewer number of feilds and the form is not comples
+									   The assiciation of form feids and the form data(binding the template and the logic) is entirely configured in the HTML template usign 'ngModel'
+									   Constaints:
+													there is no control in the ts code for the devoloper  
+													we will not be to see if there re any changes to the form without adding fuctions and by adding function 
+													it will make our html file more complex and unit testing will be very difficult
+			B.Reactive Froms
+				 Ts code wil have moe control and html code will be light
+				 unit testing will become mor eeasy
+				 complex validation can be done wthout adding custom handlers or functions
+				 
+				 form control can track validation errors each buton/feild will have its own form control
+				 form control can track state of the control-->state can be 1.dirty,touched,untouched,pristine
+				 to perform unit test we just need the .ts file and the entire control is in the ts file so integration tests is not necessary
+				 collection of form controls is called form grouping
+				 form builder:->utility clas which allows creation of forms in an easier manner
+				 
+				 Dynamic control creation and validation:->
+				 
+in property binding we have to use only " using' will consider it as a variable 
+
+{{using javascript classes inside this ow work}}-->we cannot use javascript classes inside the html file we can only use JS classes in .ts files only
+
+
+
+
+Forms
+=====
+Template Driven forms
+ all the inputs/buttons enclosed under the form tag can be tracked but given #somename=somename and give ngModel as a plain text for all the directives and give all the feilds a name 
+ 
+ ngModelGroup
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

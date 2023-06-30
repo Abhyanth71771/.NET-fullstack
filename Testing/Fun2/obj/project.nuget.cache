@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "TO1ZS5KFyamQmhZ2oDkoHx1ZyND5ZF43vq2hm6PIffvx18ecNOJjFJixFxKt5sXM4XHzTUx/DFQYI4jmucr29Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\AbhyanthP\\Desktop\\.NET fullstack\\Testing\\Fun2\\Business.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\AbhyanthP\\.nuget\\packages\\castle.core\\5.0.0\\castle.core.5.0.0.nupkg.sha512",
+    "C:\\Users\\AbhyanthP\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\AbhyanthP\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
+    "C:\\Users\\AbhyanthP\\.nuget\\packages\\nsubstitute\\4.4.0\\nsubstitute.4.4.0.nupkg.sha512",
+    "C:\\Users\\AbhyanthP\\.nuget\\packages\\nunit\\3.13.3\\nunit.3.13.3.nupkg.sha512",
+    "C:\\Users\\AbhyanthP\\.nuget\\packages\\nunit3testadapter\\4.3.1\\nunit3testadapter.4.3.1.nupkg.sha512",
+    "C:\\Users\\AbhyanthP\\.nuget\\packages\\system.diagnostics.eventlog\\6.0.0\\system.diagnostics.eventlog.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

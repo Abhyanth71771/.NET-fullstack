@@ -1,0 +1,77 @@
+		
+========================================================================================================================================================================================================
+ASP.NET MVC Core
+=========================================================================================================================================================================================================
+MVC-->model view controller
+its a design pattern
+Devloping Dynamic Techanologies
+
+Advantage of Pre Defined pattern is the problem and a solution to it given mvc does that it gives a blueprint so that we no need to waste time in solving errors
+
+
+
+Design Paterns
+==============
+	are solutions to software design problems you find again and again in real world app-development
+	patterns are about reusable designs and interactions of objects
+
+23 Gang of Four Design patterns are the foundations
+
+Types:
+	1.Creational
+		deal with creating of objects 
+		types:
+			Abstract Factory 
+			Builder
+			Factory Method
+			Singleton
+	2.Structural 
+		designing of classes and relationship between classes
+		Types:
+			adapter
+			bridge
+			composite
+			decorator
+			facade
+			flyweight
+			proxy
+	3.Behavioral
+		object communication
+
+
+Architectural Patterns:
+		broder scope as compared to design patterns
+
+wwwroot folder->contains only static files lie js,css
+
+Model-->Represent the shape of the data a class i c# is used to describe a model data related to the project is present here it can be a table inside the sql servr
+
+View-->is the user interface
+
+controller-->acts as an intermediate and recives all the user requests
+
+url syntax:->  https://localhost:port_number/controller_name/action/id(optional)
+
+In controllers foldr we will have multiple controllers create methoods with names and these name are the action names so when that action is typed it goes to that controller
+and then IActionResult returns a view which will be there in the views folder now based on the controller name there will be folder in the views folder which will ontais the .cshtml files wth the name ssame as the action methood names 
+the html view file will contain the bootstrap and the html elements
+
+there is a shared folder under the views folder this is the place where we add global JS and css/HTML codes
+
+Tag Helpers
+===========
+	they enable in server sidecode to participate in creating and rendering HTML elements in razor files
+	focused aroung the HTML elements and are natural to use 
+	
+	
+_Layout.cshtml
+==============
+	this is used for UI which will remain common fr all the pages so even when we switch between pages the UI remain the same eg:header and footer
+	
+ <a class="nav-link " asp-controller="Home" asp-action="Index">Home</a>-->this is special kind of hyperlink where the url chnahes to controler/method
+ 
+app.MapControllerRoute(
+name: "default",
+pattern: "{controller=Home}/{action=Index}/{id?}");---<this will tell which controllr and view shoukd open first 
+
+2:05:52

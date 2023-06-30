@@ -1,0 +1,715 @@
+DAY-1 14/11/22
+C#
+==
+
+By Microsoft
+
+.net was formerly knows as NGWS(Next gen of windows service)
+Is a full fledged framework
+Supports over 100 languages
+
+cross platform and open source
+
+.net is only for windows and .net core is for all platforms released in 2014 
+
+Xamarin-->Android ad IOS device 
+
+BCL:-Base class library-core set fo api's used to devolop application each platform has its own BCL to devolop an application 
+		BCL->.net
+		Mono BCL-->Xamarin
+		Core BCl->.net Core
+		 and bcl cannot be interchanged each bcl is for its own environment-->solution to this problem is .NET Starndard
+		 
+	.NET Standard->code sharing is possible, write code using .net standard and then run it on xamarin or .net core or .net
+	but still ther were 3 seperate bcl's so ms devoloped .net 6.0 which has all three bcl'seperate
+	.NET 6.0--->Core+xamarin+.net
+	
+	SDk->will contain all the libraries/compiler/bcl etc
+	
+	Blazor->cross platform web UI
+	Windows7-->the ui is done using .net
+	
+	choose a language?(source code)->language compiler(csc.exe/vbc.exe)
+																--execute-->MSIL(MS Intermediate Language) Code(binary code which cannot be understood by any os)
+																			this is language neutral cannot be executed directly should be converted this is paltform independant
+																-->.NEt clr(common language runtime)executes the MSIL(JIT compiler will convert MSIL code to native code) this is not platform independant 
+
+
+.NET CLR
+========
+		.net cannot access the memory directly so pointers are not used
+		runs Managed clr(code runs usner the supervision of CLR)
+		CLR services:
+			-cross platform integration(cross language same msil)
+			-com interoperability(calling legacy code into your .net)
+			-exception handling
+			-garbage collecting
+			-multi threading
+			-Code access security(micro lvl security cocept)
+			
+ASSEMBLIES IN .NET
+==================
+	smallest unit of deployement
+	can be a .exe or .dll(dynamic linked library)
+	collection of namespaces(similar to module in anglar)
+	assemblies can be shared by multiple files(shared assembly)and the assembly needs to stored in one place and uts called GAC(global assembly cache)
+	if each file has its own assemblie then its caled private assembliy
+	
+	.exe                                     .dll
+1.can be executed independantly					cannot be executed independantly
+2.has an entry point for execution				has  no entry point for execution
+3.each time an exe is launched					dll needs to be pulled into a process to be executed  
+an os process(use up memory) is created
+4.if an exe crashes allt he dll it refers		if a dll crashes the exe in which its executing done not crash
+automatically crash
+
+
+CTS(common type syatem) and ClS(common language specificaion):
+==============================================================
+	CTS:->common way to describe data tpes supportd by all the languages 
+				to make it cross language integration
+				so int in C# shud be understood by Vb also
+				there has to be a set of rules for all languages which is common among them 
+	CTS concentrates only on the type of data and CLs concentrates also on language rules ie:private class members cannot  accessed outside the class
+		
+			
+C#
+===
+
+	-OOP language,strongly typed statically typed language,case sensitive
+	-Anders Hejlsberg 2000
+	-C with classes
+	-c# 11 current version-->each version targetted a specific version
+	-professional and enterprise edition paid 
+	-no gui(buttons,test box)
+	-test based output on a terminal/console
+	-project-collection of source code,images which is compiled into an assembly compiled into one exe or dll
+	-extension of C# project is .csproj
+	-each project has a template
+	-A solution is container for one or more projects 
+		logical grouping of projects with extension as .sln
+	-create a solution first the add projects into it
+	-multiple languages under one solution
+	 dotnet new console-->console 
+	 dotnet build-->build program and not debug(doubt)
+	 -If there are multiple classes under the same namespace then we have to go to the .csproj file and add a feid with namespace_name.clas_name
+					(<StartupObject>day1.Program1</StartupObject>)
+	-we have to initialize a value to any variable before using it else it will given a error
+	Value types:
+		-each variable will have its own variable and type so if we add x=y then x and y will be deep copy
+
+	Reference Types:
+		can refer same value in stack acts as shallow copy 
+	everything in C# is an object and it is inherited from  System
+			this is done so that it can achive polymorphism
+	
+DAY-2 15/11/22
+=====================================================================================================================================================================================
+Implicit conversion-->smaller datatypes are assigned to longer datatypes this can be done directly as data is not lost 
+Explicit conversion-->larger datatypes are converted to smaller datatypes and this cannot be done directly we have to explicitly do it double l=5  
+
+
+USING VAR:
+==========
+	introduced form C# 3.0
+	int x=100; && var x=100 is true
+	just like js and ts var takes up datatype of which ever data we give
+	and once its assigned to a particular datatype it cannot be changed 
+	and for var unlike other datatypes a initial value has to be given else we get an error 
+	var cannot be used as a return type or as a methood parameter 
+	Why?
+		LINQ(LANGUAGE INTEGRATED QUERRY)-->we can write sql querry using this and annonymous types were used and we dont know what type of data comes from the database so i can 
+											use a var type and give it the querry
+	
+BOXING AND UNBOXING
+===================
+	value type to a reference type(Sysyem.object type)
+		value is sent to the heap and the ref is in the stack
+	if we box int x=10 then this ref:value will still be there in the stack and one more copy is made and the value is pushed to the heap and one ore ref pointer is the in the stack 
+	same case in case of unboxing 
+	
+	so instead of saving memory its using more memory
+	Why?
+		polymorphism-->anything can be A OBJECT
+		if any unit requires us to take a variabe but we dont know the type, we can use objects as  its input parameter that time we can pass any datatype to it
+ 
+	once the main is executed the stack is cleared in form of last in first out once the stack is cleared the values in that heap will not be pointed to anything so garbage 
+			collection will run and clear all the data 
+
+Console.WriteLine("The result of {0} - {1} is equal to {2}", x, y, (x - y));-->we can give multiple{0} to diaply x multiple times
+
+break is compulsory even after default 
+
+ARRAYS
+======
+	single dimentional array
+			One row and multiple columns
+			int[]x=new int[3]-->default value for the values in the array is 0 incase of int
+			int[]x={20,1,1,1,1}-->array will be depending on the number of elements we initialize 
+			
+	multi dimentional array
+		a.rectangular
+				multiple rows but each rows will hace same number of columns
+					int [,]x=new int[3,4]; -->3 rows and 4 columns 
+				access the elements by using row and column index	
+						x[0,0],[1,0]=200 etc
+				
+		b.jagged
+				multiple rows and each row can have different no of columns
+				allocate memory for the number of columns first then allocate memory for each row separately
+					int[][]x=new int[3][]
+					allocate no of columns seperatey for each row 
+					x[0]=new int[2]
+					x[1]=new int[5]
+					x[2]=new int[10]
+				in a jagged array if we use the length property it will just give us the number of rows
+				to get the length of any specified rows we have to give the row number(x[0].length)
+				
+	Arrays are reference types 
+			the value of the array is store in the heap and the pointer referencing it is stored in the stack
+	Arry in C# is of fixed length it canot be chaged once given
+	array indexing will always start with 0
+	the contents of the array can be changed 
+	the length of the array will always be the index+1
+	
+DAY-3 16/11/22
+=====================================================================================================================================================================================
+
+Params Keyword
+==============
+	allows us to write a function which can take variable number of arguments
+	similar to rest parameter
+	it should always be the last argument it should come after all the required parameters
+	there can be only one params in a function
+	the argument for which params is applied must be an array
+	
+Out Parameters
+==============
+	Allow us to return more then 1 value at a time
+	
+	
+Creating Class Libaries In C# For Reusability
+=============================================
+	A class library is a 'dll' file (.NET Assembly) which contains one or more classes
+			it is one of the poject types in .NET
+			This project cannot be executed directly as its a dll file
+			it can be reused in a console/web application
+	once a class library has been created it can be used in any .NET console/web aplication
+	by adding refrence to it
+	A class lib is used to reuse/share code across .NET apps
+	Any classs inside the class lib project must be public so that it can be reused from outside apps
+	
+	In C# there are 5 Access Modifiers:
+					1.Public
+					2.Protected
+					3.Private
+					4.Internal
+					5.Protected Internal
+					
+	Ildasm.exe-->this allows us to peek into dll file
+	ildasm <<file name>>
+	ildasm greetClass.dll
+	
+Object Oriented Programming
+===========================
+	methood overloading-->static polymorphism
+	methood overriding-->dynamic polymorphism
+	
+DAY-4 17-11-22	
+=====================================================================================================================================================================================
+
+Major Piller of OOP
+===================
+	1.Abstraction
+	2.Encapsulation
+	3.Polymorphism
+	4.Inheritance
+	
+Classes in C#:
+	All codes must be inside the class
+	class can have 
+			data members,methoods,(they are private by default),static methoods,instance methoods,properties(getters,setters)
+			constructors can be overloaded
+	once a class is created one or more objects/instance of that class can be created
+	classes are internal by default
+	internal Access specifier:->makes the class internal only to that particular dll/exe file they cannot e accessed outside the dll or the exe file
+	classes can be logically grouped into namespaces
+	different namespaces can have class with the same name 
+	namespaces can have another namespace inside it 
+	
+AutoImplemented Property 
+========================
+	getters and setters are a easier syntax n C#
+	data members are private by defaut
+
+Static data members are used for data mambers they are stored in the heap as a name:value pair and is pointed to all the objects 
+	to access static data members we hve create static methoods
+	Static methoods can be called without any object creation as they do not require any  object instance
+
+Properties in C#
+================
+	a way to acces private data member of a class without using the methood syntax
+	why?
+		same property can be used to get and set the vales of a private data member
+		properties use a non methood syntax
+		each property must access only 1 private data member this means if class has n private data member then it should have n getters nd setters
+	C# 3.0 introduced auto implemented properties:
+		the c# compiler automatically creates the corresponding private data member for a property 
+			this means a property need no set or explicitly return a value of the private data member
+			shorter syntax
+			you create a methood with some name and inside just write get and set internally C# creates a data member which is not known to us
+			and we can acces that particular getter and setter private data mamber by using thst function name
+			prop double tab
+			
+MS recommends us not to concat strings because first time will store the value in the heap and next time when you contact to the same string the old value  is not incremented
+	instead a new value is created with the updated value abd now the string variable points to this value and the reference from od value is removed which will be removed by the garbage collector
+	but when the garbage collector will run is an unpredictible action so much of heap memory is wasted  s MS reccomends to use
+		String builder create a object of this  type 
+	
+DAY-5 18/11/2022	
+======================================================================================================================================================================================
+Methood Overloading
+===================
+	Multiple methods with the same name but with different method signatures
+	Methood Signature consists of 3 things:
+		1.Type of args
+		2.Order of the Args
+		3.Number of args
+		3.Return type(is not considered for overloading)
+		1,2,3 must differ for a methood to be overloaded
+	When methood are overloaded which version is called depends on how its called 
+	only if the return types are changed it cannot be considered as overloading 
+	during compile time itself the decision is made on which version of code is called and the MSIL code will already contain the function call for that particular function
+
+
+Inheritance
+===========
+	code reuseablility
+	base class-->derived class
+	multiple inheritance is not allowed
+	syntax:
+		class<base classname>:<derived class name>
+		{
+		}
+	private members are not inherited only public and protectd members are inheritance
+	is-a relationship
+	in inheritance we create an object of the child class and then cces the methoods of the parent class
+	
+	while the child obj is create the constructor of the parent is called first as the child is drived from the parent then only the constructor of the child cass is called
+	
+	when the child creates a methood with the same name as that of the parent class the methood gets overidden and the methood in the child gets executed and the parent method is ignored
+	to make sure both the methoods are called we have to use the base keyword in the child method 
+	In overriding the methoods will have the same name and signature the child methoods shadows and/or overides the base class methood 
+		Shadowing is intentional
+	adding or removing new is both called shadowing but adding a new keywork is letting .net know that ik theres a clash in the functions name idc show mine(id->the child class)
+	
+RunTime Polymorphism
+=====================
+	a base class reference can point to a derived class object		
+			shape s=new circle()
+		if a methood is called using the base class reference the version of the methood which get called depends on what the base class reference is pointing to at runtime
+			shape s=new circle()
+			s.area()			
+			s=new square()
+			s.area()			
+		
+		For this to work following condt must be met:
+				1.circle square must inherit shape
+				2.the shape class must have a methood name 'area'
+						this area methood should be marked as virtual
+				3.circle,square must override this methood using the overides keyword
+						virtual methood can be shadowed  using the new keyword
+						but to use override keyword methood must be virtual
+		for overides to happen the methoods must have the same function names and signature else it wont work				
+		
+Constructors In Inheritance:
+===========================
+	if a base class has a parameterized const the derived class's parameterized const must also accept args of the base class const
+		the derived class parameterized const can then use the 'base' keyword to invoke the const of the base class
+		this avoids code duplucation of the base class
+		You can also make variables inside the base const as private and still supply values to it but it cannot be accessed from the child class 
+		we use base keyword so that if any parameters are given while calling the child the control goes in the the way we want ie:parameterized parent-->parameterized child 
+		if we dont give the base class then the values are not pushed to the parent directly we will have to access the variable of the parent class then show the values and if 
+		there are many variables then it will be difficult for us to initilize each variable with that recived value
+DAY-6 21-11-2021		
+=====================================================================================================================================================================================
+Abstract Classes
+================
+	objects cannot be created
+	one or moe abstract methoods
+	can have concrete methoods
+	abstract methoods will be overridden by the actual methoods using overide keyword
+	abstract classes are used to define the behaviour of the entity in a generalized manner and the meaning is added by the child classes
+	its compulsory for the child class to overide all the abstract methoods in the abstract classes
+	A child class can inherit only 1 abstract class
+	
+Interfaces
+==========
+		A interface is  a contract
+		why?
+			loose coupling there will be no reltionship ie:onlt the methood nae is inherited and the meaning to those names are given by the child classes
+		one interface can inherit another interface
+		
+
+INTERFACES                                         ABSTRACT 
+concrete methoods are not allowed						concrete methoods are allowed
+
+class can inherit multiple interfaces					classes can inherit only one abstract classes
+
+loose coupling											tight coupling with hierarchy
+
+interfaces are immutable								abstract classes are mutable-->we can add concrete methoods even after classes are created 
+
+
+If a class implements 2 interfaces and both the interfaces have the same function with same name and signature then c# compliler gives us an ambiguity error 
+		so we have to use explicit/implicit implimentation
+		we use implict wen the implementation is same for all the interface methoods
+		and we use explicit when we have multiple logic for the same methood
+	A class can have only 1 implicit implementation but multiple explicit implementation
+	A class can have only 1 implicit or only explicit or combination of both or multiple explicit
+	
+Sealed Classes
+==============
+	Are used to prevent inheritance
+	can be used as a normal class,but cannot be inherited
+	trying to inherit the sealed class will result in a compile time error
+	
+Generics
+========
+introduced from version 2.0
+	also known as 'parameterized types'
+	type safe promote code re-use and improve perforance 
+	prevents coad-bloating-->when we overload methoods in the finaly exe file we will still have n functions with different return type and this will increae the size of the exe file
+								by using generics we can create one function and then add T to make it take dynamic types of data 
+	if the input type is object we can send any type of datatypes to it 
+	mainly used in collections
+	
+
+DATABASE CONNECTIVITY USING ADO.NET
+===================================
+		Active data objects->connect to relational or non relational database
+		set of API's and also an object model which allows any .net application to connect t DB
+		
+		This API can be used by any .NET application(desktop,web,mobile,etc,console)
+	
+	
+ADo-->linq--->enitiy framework	
+
+DAY-7   22/11/22
+=====================================================================================================================================================================================
+
+System.Data.SQLClient-->For SQL server
+
+	SQLConnection-->connection to the DB server
+	SQLCommand-->for firing SQL Comands
+	SQLParameter-->ceate parameterized queries
+	SQL DAtaReader-->read results
+	SQLTransaction-->mnage transactions
+	
+Steps to use ADO.NET in a .NET application	
+	1.Create a connection (SQl connection)-->using a 'db connection string'
+	2.Create a command(SQl command)
+	3.associate the command with the connection
+	4.specif the SQL command rext(string)
+	5.fire the command
+	6.proces the results
+	7.close the connection(if any)
+	
+Collection
+==========
+	similar to array but array is of fixed size and collections are dynamic and they are resizeable
+	used when no of elements are not known
+	Generic Collections:->of a particular datatype
+	list<t>-->dynamix arraystack<t>-->lifo data structure
+	queue<t>-->fifo data structure
+	linkedlist<t> -->implements a linked list
+	
+	A table from the DB can be represented as a collection in a .NEt application
+	Each record in the table can be an 'enity class' in .NEt
+	each column ccan be a property of the entity class
+	
+This concept of mapping db table ,records,coumns,into a .NEt colection,class and 
+
+
+
+right click on project-->manage newget-browse-->microsoft.data.sqlclient
+
+add this namespace using Microsoft.Data.SqlClient; in the class
+
+DAY-8 23/11/22
+=====================================================================================================================================================================================
+Exception Handling
+	exception is a run time error
+		eg:tring to read from a file which has read-only permission
+	when a  runtime(exception) error occurs and if its not handled the clr handles its and terminate the program abnormally and detailed messege will be shown which mite revel too much info
+	or maybe difficult to understand
+	What?
+		act of handling runtime errors
+	Why?
+		to prevent program from terminating abnormally
+		to display a more user friendly messegeto continue execution gracefully
+	
+	Syntax
+			try
+			{
+				//code to monitor for  exceptions
+			}
+			
+	catch(<exception type><object>)
+	{
+		//exception handling code
+	}
+	finally
+	{
+		//code to execute whethere or not exception occurs or not
+	}
+	
+	multiple exceptions can be handled in different ways add multiple cach blocks or add ifs in one catch block
+	
+	add the generic exception in the end so because adding it first will make all the exception go to that particular exception so have specific exception at first then add generic exception
+	
+	how to use SQL DataReader to read each rown one by one
+		1.Call the Read() methood of the SqlDataReader to read the curent row(returnd true if thers row to read)
+		2.Access individual columns of the data reader using the column name
+	
+	In ADo.NEt when executing insert elete and update querry use ExecuteNonQuery()
+	methood of sql command class since threis no result set 
+		ExecuteNonQuery()	 returns the number of records affected bye the querry
+	
+DAY-9 24-11-22
+=====================================================================================================================================================================================
+
+	
+Delegates in C#	
+	reprents a function(pointer to a function)
+	reference types 
+	Why?
+		for event handling
+		for callbacks
+		typesafe function pointers in C#
+		to handle higher order functions
+	A delegate point to a static or a non static methood
+	The delegate of the delegate and the signature of the methood must be same to which it points
+		this is what makes delegate typesafe
+	Delegates are of two types:
+		a.Unicast Delegates:can contain reference of only one methood at a time
+		b.Multicast Delegates:cn contain the reference of multiple methoods at a time
+			
+	Steps:
+		1.Define the delegate(create the pointer)
+					public delegate <return type><delegate name>(<parameter list>)
+							public delegate double ComputeDelegate(double x)
+		2.Instantiate the delegate(make it point to a method)
+					computeDelegte cd=<methoodname>
+							MyDelegate md =name
+		3.Invoke the delegate
+					cd(Parameters)
+	Delegates must always be defined inside the class or a namespace
+DAY-10 28-11-22	
+=====================================================================================================================================================================================	
+Multicast Delegates
+===================
+	why?
+		event handling
+		when the delegate is called all the methoods who reference is stored in the delegate are ivoked one by one 
+	Methoods are invoked in the sequence in which they were added
+
+Lambda Expressions
+==================
+	are annonymous functions
+	shortcut way to write annonymous functions
+	C#3.0
+	primarily used with LINQ
+	used to pass a fuctio directly as a parameter
+	
+Extention Methoods
+==================
+	are methods which can be attached to an exixting type without creating a new type or extendidng from the existing type
+	used by LINQ
+	C#3.0
+	Rules:
+		must be inside a 'static class'
+		must be defined as static
+		must have first parameters as 'this'
+	usual practics:create a dll/class and put all the extention insid it 
+	.where
+	
+LINQ
+=====
+	Language integrated query
+	way of writing querry which are native to the C# language
+	A set of APi's which allows writing sql like querries on C# collection and arrays
+	such querries are understood byt the C# compiler
+	linq API's consisit of extention methoods which can be used to fire all sorts of queries on arrays/collection
+	Flavours of LINQ:
+		1.linq to objects 
+				C# arrays and collections
+		2.LINq to entities
+				when using LINQ with Entty Framework core
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

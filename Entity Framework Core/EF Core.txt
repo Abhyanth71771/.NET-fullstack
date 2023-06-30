@@ -1,0 +1,226 @@
+ENTITY FRAME WORK CORE DAY-1 29-11-22 
+=====================================================================================================================================================================================
+What?
+	MS official data access platform
+	A cross platform open source ORM(Object Relation Mapper)
+	Wrapper over ADO.NET
+Why?
+	Eliminates the need to write data access code explicitly
+	allows interaction with the backend database using an OO manner/paradigm(insted of connecting to a DB using sql methoods or DO we can use object oriented way to connect to 
+	a database this becomes easy for us to connect and retrive/put data to a DB)
+	allows firing linq querries on .net collections which beind the scenes are translated to the corresponding SQl querries
+	
+what is ORm?
+	A techinique used by devolopers to intract with backend database using object oriented approach (like class,obj,properties)
+	EF core sits between your .net app and underlying backend db
+	
+	
+	.NEt App    =====Ef Core===      Backend DB
+
+In ADO.net we still ned to know SQL as we write the querries in sql as a string byt in Ef we do do that so this is easy compared to ado.net
+
+
+DATABASE WORLD                                               OO WORLD
+table                                                        class
+rows/tuple                                                   object
+feilds/columns                                               properties
+
+EF core supports relational as well as non relational database
+
+in ado.net we have to learn querries for differnt flavours  but in ef core depending on the backend we are going to use we just need to install using NuGet
+
+EF Core:
+	Buisness objects/Domain classes/Entity class
+					is a simple .net class which corresponds to an underlying backed database table
+								a table in sql named x with be a entity class named x and the feilds in the table named x will be properties in the class 
+	DB context-->is another .net class		
+								interact with the underlying data provider
+								manages the db connection
+								tracks entity states
+								caches query results
+								converts querry results into .net obj
+								translates linq querries to underlying sql querries to be sent to the backend
+								exposes backend entities as .net collections
+								
+Ef Core Approaches:
+===================
+	1.Code first approach
+			create backend tables using .net classes and db context
+			used when theres no exixting database present
+			class is mapped to the table
+						
+	2.database first approach
+			create .net classes and db context using pre-existing db 
+			used when db is already present
+			table is mapped to the class
+	
+Steps
+======	
+1.Create a .net app	
+2.install ef core with the required data provider via NuGet	
+3.create the entity/domain classes	
+4.create the db context class(db connectinn)
+	the class name given is it self the table name(file:program.cs)
+5.tell ef core to create the db and tables based on the entity classes
+6.start interacting with the backend using ef core
+
+DAY-2 30-11-22
+=====================================================================================================================================================================================
+Inserting Data Into  A Table
+============================
+	1.Create an object of the entity class
+	2.Set the values for the properties if the entity class 
+	3.Add the object to the corresponding Dbset<t>collection property of your context class
+	4.For Ef core to actually fire an insert querry call the savechanges() methood of your dbcontext class
+
+
+
+Difference Between Find and LINQ
+
+Find                               											  Where	
+search only with primary key 													find records using any crieteria ie any records can be used
+will first find in the .net memory  											will surely fire a select querry
+then if its not there it will go to sql 	
+
+Querying
+========
+	LINQ can be used to query entities in Dbset via dbcontext
+	the flavor of linq used in ef core is LINQ to entities
+	ef core bts fires the appropriate select queries
+	
+LINQ querries Have 2 modes of execution:
+		1.Immediate Execution
+			The query is executed immediately when functions like
+							ToList(), Count(), etc. is applied to the result set
+			Immediate execution can also happen if the query results are
+							iterated immediately using a foreach
+			Why?
+				 To cache query results
+		2.Deferred Execution(delayed execution)
+				The query will not be executed until the result set is iterated using for each loop
+				The query will not be executed until the result set is iterated
+					using a foreach loop
+				* Why?
+					before the query results are iterated using foreach,
+					if any changes are made to the underlying table, the 
+					query results are guranteed to give you updated results
+
+				* The LINQ query can be extended with additional 
+					conditions...
+DAY-3 1-12-22
+=====================================================================================================================================================================================
+EF Core Entity States
+	Entity States is a part of chnge tracking mechanism which is the responsibility of DB context 
+	each object is tracked by the db context and based on what is done to that object the states are assigned and based on the states 
+			given to the object it will fire the required the query
+	Each entity may have the following states:
+		1.Added-->tracked by the context but dosent exitst in the Database`
+		2.Modified-->tracked by context exists in the DATABASE and some properties have been modified
+		3.Deleted-->tracked by the context 
+		4.Unchanged
+		5.Detached
+		https://learn.microsoft.com/en-us/ef/ef6/saving/change-tracking/entity-state
+	
+Relationships in EF Core
+========================
+	Principle Entity(parent) and dependant entity(child)
+	1)1:1(one to many)
+			An entity in oen table is related to only one entity in another table
+	2)1:N(one t many)
+		one entity on one table can be related to many entities in another table
+		
+	3)M:n(Many to many)
+		more then one entities in one table may be related to more then one records in another table
+		The Physical DB implementation is doen by using a linking table or a junction table
+	
+	HoW does EF figure this out?
+			ef uses certain conventions to decide what kind of relationship do entites have
+			principal entite must expose a collection property of the dependant entity type 
+//every class will have a dispose 
+object=null garbage collection will run after n mins/secs
+
+
+
+the Primary key and the class name has to be same with the sufix Id else we get a primary key not found error
+
+DAY-4 5-12-22
+=====================================================================================================================================================================================
+Types of Loading In Ef Core:
+		1.Eager Loading
+				EF core will fire one querry to retrive the parent and the associated child entities
+				When to USe?
+					When the child entities are needed initially
+				How to implement?
+					use te include() method on the dbSet of the parent entity and specify the navigation property
+				EF core fires only a single querry to get all the records 
+		2.Explicit Loading
+				Ef core will load the associated child entity for an in memory parent entity
+				Can be used on a single entity only
+				When to use?
+					When the parent entity is in the memory as a result of some kind of find operation and you want the associated child as well
+				used for search operation because the enitiy is loaded only when we need
+				db.Entry(parent_entity).Collection(navigation prop name).Load()
+		3.Lazy Loading
+				loads al the children only when the navigation property of a parent entity is acessed 
+				Must be Configured explicitly
+				Key Points
+					ef core will fire seperate sql query for each parent entity to get its related child entities
+					May involve multiple server roung trips
+					performance can be a concern
+					for this to work each navigation property of the parent must be defined as 'virtual'
+					Install the Microsoft.EntityFrameworkCore.proxy package
+				Lazy loading is DISABLED by default
+				optionsBuilder.UseLazyLoadingProxies(); add thisis dbcontext class
+				MARS-->introducted in ADO.NET 2.0
+						Multiple Active Results sets
+						Alows multiple data readers on the same connection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

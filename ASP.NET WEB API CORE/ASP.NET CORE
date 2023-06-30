@@ -1,0 +1,942 @@
+ASP.NET CORE WEB API             DAY-1 06-12-2022
+=====================================================================================================================================================================================
+ASP=Active Server Pages
+		
+What is AS.NET Core?
+====================
+		A cross platform open source framework for creating web applications and web services that can be deployed on premise as well a on cloud 
+		
+Web Application
+===============
+			* Has a UI, can be accessed using HTTP/HTTPs
+Web Service
+===========
+			* A kind of a web app, no UI
+			* Accessible using HTTP/HTTPs
+			* Used to expose some kind of reusable BL, data that
+			   can be developed using one technology/language and
+			   can be accessed using any other technology/language
+			  Example:
+				some logic written in .NET can be accessed from
+				a Java app or vice-versa
+			* Can be accessed from any platform, device
+			* Web Services always communicate using open standards
+			   like HTTP/HTTPs  --> data formats could be JSON, XML, HL7, etc...
+
+What is ASP.NEt core Web Api?
+=============================
+	A framework for creating RESTfull web services
+	
+
+Types of Web Services:
+======================
+	1.SOAP Based-->Simple object access protocol
+	2.RESTfull-->Representational State Transfer
+				An architectural pattern for creating services that can be accessed using HTTP/HTTPS fom any platform/device
+				Any web service devoloped using this pattern is known as RESTful service/REST service 
+				by Roy Fielding in the yar 2000
+				Characterstics of RESTful Services:
+					1.based on client-server architecture
+						server will host the restful service
+						client accesses the service using HTTP/HTTPS from any device/platform
+						RESTful server--->RESTfull client
+						
+					2.Are Stateless-->will not store any data ie:if a client requests for data and after some time again requests for data the server wont remember the client
+					3.Objective of a RESTfull servive is to 'expose some kind of data' as 'resources'
+						A resource could be some data pertaining to some domain 
+								Eg:patients,employees,books,depts
+					4.Based on a request-->response model
+							the 'representation' of the request and the response must be transparant and should not make any assumptions
+							The representation contains the 'state' and some metadata which describes the 'intention'
+							when a get and post is given to the server the metadata dertemines what should be done to that request 
+					5.each resource has a URI(HTTP/HTTPS endpoint) hat can be accessed by the client 
+							each uri corresponds to an intention based on the HTTP verb to represent it
+											http://someserver.com:9999/employees/1
+											http://someserver.com:9999/employees/2
+											http://someserver.com:9999/brands/1/models
+
+							Each URI corresponds to an intention based on the HTTP
+							verb used to represent it
+								Example:
+									An HTTP GET request to http://localhost/books
+									An HTTP POST request to http://localhost/books
+							
+							
+Json is the preffered data format
+
+Understanding the MVC architecture
+==================================
+MVC = Model View Controller
+	* Is a very popular software design/architectural pattern implemented by 
+	   many frameworks
+
+	* Why MVC?
+		* Clean SOC (Separation Of Concerns)
+		* Loose coupling of application components
+		* Reusability
+		* Testability
+
+	Core Idea
+		* Application is divided into 3 components:
+		1. MODEL
+			* Represents the data domain
+			* Contains the data access code and entity classes
+
+		2. VIEW
+			* Represents the UI (what the client sees & interacts with)
+			* Usually HTML, CSS, JS....
+			* Core responsibility of the view is to display the model
+
+		3. CONTROLLER
+			* Bridge between the model and the view
+			* Contains the application logic/BL
+			* Is the SPOC for the client
+				* When the client makes an HTTP request, the 
+				   request hits the controller first
+				* Controller will interact with the model
+				* Controller selects a view, pass the model data
+				   to the view
+				* View will then display the data
+
+	Controller can tested independently without the model and view
+	Model can be tested without controller and view
+	View can be tested without controller and model
+	and so on....
+
+
+ASP.NET Core Web API is based on the MVC pattern..
+
+ASP.NET Core Web API project is compiled to a .dll as well as an .exe
+
+	.dll		--> used when hosting the Web API on IIS (Windows)
+	.exe		--> used for self-hosting (Kestrel web server)
+				Used in Microservices environment 
+
+Execution starts from Program.cs file
+
+	* Every ASP.NET Core Web API Project has one or more "controllers"
+	* Each controller is a .NET class
+	* Each controller contains one or more "action methods"
+	* Each action method returns an "action result"
+
+	* As a good coding practice, create controllers inside the "Controllers" folder
+	* Controller class names must have the following format:
+		<<name>>Controller
+	* Each controller inherits from ControllerBase (predefined .NET class)
+		ControllerBase is for controllers without a view support
+
+	* Whether the RESTful service is hosted on Kestrel or IIS, it will have a URI in 
+	   the following format:
+		http://servername:port/webappname/controllername
+		Example:
+			http://localhost:9999/DemoWebAPI/Demo
+			http://localhost:9999/DemoWebAPI/Demo1
+
+	* One controller per resource(good coding practice)
+
+	http://localhost:9999/DemoWebAPI/Books
+		Add a book 		--> POST
+		Get Books		--> GET
+		Modify a book		--> PUT
+		Delete a book		--> DELETE
+
+		
+	http://localhost:9999/DemoWebAPI/Customers
+	http://localhost:9999/DemoWebAPI/Patients
+
+	* Action methods contain the logic to be executed for a specific intent 
+	  (HTTP verb) --> GET, PUT, POST, PATCH, DELETE, etc..
+
+	* Action methods must be public and instance methods
+	* They must return some value back
+		* This value is the "data" from the RESTful service which represents
+		   the "VIEW" in MVC
+			Data format must be understood by all
+			Usually JSON, XML, etc...
+
+	* By default an action method in a controller is invoked for each kind of 
+	   HTTP request (GET, POST, PUT, DELETE, etc..)
+
+	* Use attributes like [HttpGet], [HttpPost], etc. for an action method if you
+	  want that action method to be invoked for a specific HTTP request
+
+	* WHICH ACTION METHOD GETS CALLED WHEN DEPENDS ON THE TYPE OF
+	   THE HTTP REQUEST
+	* The request never contains the action method name. It contains only the 
+	  controller name
+	
+DAY-2                         7/12/22	
+==========================================================================================================================================================================================================
+	
+ASP.NET CORE WEB API REQUEST RESPONSE CONCEPTS
+==============================================
+		1.Execution  starts by reading config defaults setting up DI,services,adding middlewares,etc
+				1.WebApplication.createBuilder(args)
+				2.builder.Services.Add(...)
+						builder returns an instance of the app on which middlewares can be added and routes can be configured
+				3.the run() methood then runs the app(blocking)
+				
+		2.The kestral web server then starts up and is ready to recive requests
+//swagger is a techinique to document the restfull sservices 		
+			
+MIDDLEWARES/INTERCEPTORS IN ASP.NET CORE WEB Api
+===================================
+		.net class withtsome logic 
+		contains some methoods which will get executed before the requests hits the controller 
+		Why?
+			to perform tasks before the request goes to the controller or before the final response is sent the the client
+			Provides clean seperation of code
+			is pluggable
+			to modify the incoming/outgoing requests/reponse 
+		
+		we can have middlewares for client requests as well as for the servers reponse 
+		each middlewares performs a particular action 
+		and since they all are .net classs they exist on the server side
+		it can also short-circuiting the requests ie->if any middleware feels the request is not valid or any errors the middleware can itself take
+		action and send back the request bak to the client
+		
+An action methood in a ASP.NET core web api controller must return HTTP status code along with the data this is considered as a best coding practice
+	200-->ok
+	404-->not found
+	500--->internal sever error
+	
+	To return HTTP codes from an action methoods 2 thing must be done:
+		1.Return Type of action methood must be 'IActionResult'
+		2.use built in methoods of the controller class to return appropriate status code action results
+			eg: ok()-->returns OKActionResults
+			
+
+
+
+Making a POST request
+=====================
+	 Data to be added will be in the request body
+	 ASP.NET Web API uses a technique known as "model binding"
+		Model binding reads JSON properties from the request body
+		and maps each property to a corresponding property of a .NET
+		class specified as the action method parameter
+
+
+When making a POST request, the client needs to specify the MIME type using the 
+"Content-Type" HTTP header.
+	
+
+MIME = Multipurpose Internet Mail Extensions
+
+
+Content Negotiation
+===================
+		Its a concept in which client specifies the desired format of the 
+		response to the Web API via an "Accept" header and the Web API
+		returns data in that format
+
+8/12/22 DAY-3
+========================================================================================================================================================================================================
+
+EF CORE INTEGRATION WITH ASP.NET CORE WEB API
+=============================================
+	DataBase First Approach
+	
+	Controller may also use a service to talk to the EF core just like in case of angular 
+	
+	
+	
+	
+Scaffold-DbContext "server=CTAADPG038Q88\SQLEXPRESS;database=aspnetwebapidb;integrated security=true;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer
+
+
+always when we use Dependancy Injection we use interface name to inject the service but in angular we use the service name as the TS code will get converted to JS code and there is no code generated for 
+Interfce as the concept does not exist in JS
+
+
+Steps To connect ASP.NET WEB API With Entity Framework(ie->SQL To WEB API)
+===========================================================================
+	1. Create the SQL Server DB (aspnetwebapidb)
+	2. Create one or more tables in it
+	3. Populate the tables with some data
+	4. Create a .NET Class Lib project in the current solution (DAL.dll)
+		Install 2 things:
+			a. EF Core NuGet Package
+				Microsoft.EntityFrameworkCore.SqlServer
+			b. EF Core tools to generate Entity Classes from a pre-existing
+				database
+				Microsoft.EntityFrameworkCore.Tools
+
+	5. Using the "Scaffold-DbContext" command, generate the Entity classes & 
+		db context classes
+			Run the command from NuGet package manager console
+			from Visual Studio 2022
+	6. Create a ASP.NET Core Web API Project in the current solution
+	7. Add a reference of the class lib (DAL.dll) in the Web API project
+
+	8. Create a folder named "services" in the Web API project
+		All services being used by controllers will go here
+
+	9. In web API, services are simple .NET classes whose instances are injected into
+		the controller using DI
+		Good Practice:
+			Create an interface
+			Create service classes implementing the interface
+
+	10. Inject the service class as a "singleton" service into the controller.
+		In other words, tell Web API to create only one instance of the svc
+		and use that same instance for each controller instance created
+
+	11. Create a "CustomersController"
+	12. Create a constr in the controller class and declare the dependency via an
+		interface parameter
+		You need to tell Web API's DI mechanism which instance to inject
+		when the controller instance is created
+
+
+For a POST request,	ideally Web API must return a status code of 201 (Created)
+which automatically sends a "Location" response header which the client can
+access to cross-check the newly added resource
+
+The Location header points to a URI which the client can access to cross-check
+the newly added resource
+
+Use the Created() helper method to return 201 status code
+
+DAY-4  13-12-2022 
+=========================================================================================================================================================================================================
+3 Ways of adding a service using ASP.NET Web API Di mechanism
+	1.AddSingleton
+		Only one instance(global,shared across all HTTp requests)
+		
+	2.AddScoped
+		created for every HTTP request
+		Shared for a single HTTP request
+	3.AddTransient
+		one copy for each service in a single HTTP request
+		not shared in a single HTTP request
+
+Suppose there are 2 services a,b   injected to a controller x and both a and b are injected with c as a db context and the controller has total of 10 http get/put/post
+		in  AddSingleton-->only 1 instance of a and b are created and one instance  c is created and injected for all the http methoods 
+											1 instance of a
+											1 instance ob b 
+												so total of 2 for all http request 
+											1 instance of c
+												so total of 1 for all http request
+												
+			AddScoped-->10 instance of a and b and 10 instance of c
+												10 instance of a
+												10 instance of b
+															so therefore 2 instance per HTTP requests
+												10 instance of c
+															so 1 instance share betweeb 2 services(a,b) per HTTP request
+															
+			AddTransient-->10 instance of a and b and 20 instance of c
+												10 instance of a
+												10 instance of b
+															so therefore 2 instance per HTTP requests
+												20 instance of c
+															so 2 instance per HTTP request one for each service a and b	
+When using EfCore DbContext must be request specific	
+	
+	
+CORS(Cross origin Resource Sharing)
+===================================
+	What?
+		Browsers by default do not allow a website in one domain to make AJAX requests to a web site in another domain This is called as 'same Origin Policy'
+	Why?
+		To prevent CSRF Attacks
+	What is CORS?
+	CORS is  a w3c standard which relaxes the 'same origin policy' and allows making AJAX requests from one web site to another website using some rules
+	
+	
+Enabling CORS in ASP.NET web api
+================================
+	Add the cors service to the application		
+			using AddCors()
+	create a cors policy in the web api which allows request from all cross origins/specific origins for all methoods/specific http methods
+		create a named policy which specifies which origins and/or http methoods are allowed
+				use the AddPolicy() methood
+				use the UseCors() middelware with a named policy 
+	CORS can be enabled globally (applicable to all the controllers) or can be enablled for specific controllers
+		use the [EnableCors] attaribute with a named policy on a controller
+	
+post put delete-->preflight-request preflight-response   -->the localhost first send a request before sending the actual reuest to the server asking for some permission the the server allows by sending
+															pre-flight response to the client if allowed then the actual requests are sent else error is thrown so we need to add a content-type 
+															in the cors
+	
+DAY-5 14-12-2022	
+=========================================================================================================================================================================================================															
+	
+API VERSIONING
+==============
+			what?
+				Having multiple versions of the API side by side
+			Why?
+				Evolving API's without breaking existing clients
+			we cant be changing the api as and when we like because it will break the users application
+			
+Steps to implement ASP.NET Core Web API Versioning:
+==================================================
+	1. Install the following NuGet Package:
+		Microsoft.AspNetCore.Mvc.Versioning	
+
+	2. Add the API versioning service to the application
+
+	3. Add the [ApiVersion] attribute on each controller specifying the version
+
+		1.1.1
+		1.2.1
+		1.2.3
+		2.0.0
+		2.1.0
+		2.1.1
+
+How can the client specify the version of an API to use?
+========================================================
+	a. Using a query string (query string name is fixed)
+		?api-version=1.0
+		?api-version=2.0
+
+	b. Using an HTTP request header (preferred)
+		* Specify what should be the name of the header
+
+	c. Specify the version number in the controller route
+		[Route("v{apiVersion}/allcolors")]
+		Example:
+			http://localhost:5077/v2.0/Customers
+			http://localhost:5077/v1.0/Customers	
+		
+		
+		
+		
+	HTTP INTERCEPTORS
+
+http://localhost:5220/allcolors/?api-version=2.0
+
+
+
+
+
+SWAGGER
+=======
+		langulage agnostic way of documenting a restful service
+			What endpoints does REST API support
+			What parameters to pass to each endpoint 
+			what kind of response is returned
+			trying out endpoints online
+		swagger is based on 'OPEN API Specification'-->set of guidelines on how restfull services must be documented
+		Swagger can be tought of as what WSDL(web service description language) is for SOAP-based web services
+		
+		
+		Why?
+			creating service proxies on the client
+			automated tools can read the document
+						-->specifically used when devloping API gateways
+						
+Swagger
+	* Language agnostic way of documenting a RESTful Service
+		* What endpoints a REST API supports?
+		* What parameters to pass to each endpoint?
+		* What kind of response is returned?
+		* Trying out the endpoints online
+
+	* Swagger is based on "OpenAPI Specification" --> set of guidelines
+	  on how RESTful services must be documented
+
+	* Swagger can be tought of as what WSDL is for SOAP-based web
+	   services
+
+
+	Open API Specification
+		a standard for describing RESTful APIs
+
+
+	Swagger
+		a set of open source tools based on Open API
+		specification
+
+	Swashbuckle
+		a NuGet package to use Swagger tools in .NET
+
+
+	Why Swagger?
+		a. Creating service proxies on the client
+		b. Automated tools can read the document
+			--> specifically used when developing API Gateways
+
+
+	Steps to implement Swagger in ASP.NET Core Web API.
+		1. Install the following NuGet Package:
+				Swashbuckle.AspNetCore
+
+		2. To enable the Swagger service
+			service.AddSwaggerGen();
+				creates a document containing JSON 
+				objects based on the REST API
+
+		3. Call the UseSwagger() middleware
+			app.UseSwagger();
+				Expose swagger document objects as JSON 
+					endpoints
+		4. Call the UseSwaggerUI() middleware
+				Generate a user-friendly HTML document
+				containing all the swagger endpoints and also
+				will allow user to test each endpoint and see the
+				response
+DAY-6 16/12/22		
+===========================================================================================================================================================================================================		
+
+Authentication and Authorization in ASP.NET Core WebAPI
+=======================================================
+	Authentication-determining a user's identity
+	
+	Authorization-Determining if user has rights/permissions to access a certain resource
+	
+	Federted Identity(Single Sign On)-its a way to delegate authentication to some extrenal provider
+						done via external sources you dont actually need to do the authentication
+					Why?
+						no need to remember different usernames and passwords for different web sites(User's perspective)
+						As a devoloper->
+										no need to manage/administer credientials
+										decouple authentication/Authorization code from your main app
+	OAuth->starndard to implement federated identity
+					JWT(Json Web tokens)-->
+										
+						
+						
+			
+		
+Scaffold-DbContext "server=CTAADPG038Q88\SQLEXPRESS;database=aspnetwebapidb;integrated security=true;TrustServerCertificate=true"Microsoft.EntityFrameworkCore.SqlServer
+
+
+		
+		
+		
+IDP
+===
+	* An application which provides digitial identities
+	* Contains the entire authentication/registration logic
+	* Examples:
+		facebook, google, yahoo, twitter, etc...
+
+RP
+==
+	* Is the service provider
+	* In .NET, this can be an ASP.NET Web API which is secured/relies
+	   on some kind of authentication/authorization
+
+Consumer
+========
+	* Is an application which wants to utilize the services of RP
+	* Can be an Angular, React JS, .NET, Java, etc. app	
+
+The flow:
+=========
+	1. User logs in to the consumer app via an external IDP
+	2. IDP authenticates the consumer and sends back a TOKEN	
+		Token contains the user's CLAIMS like uname, email,
+		roles, etc..(non-sensitive information)
+	3. Consumer makes a request to the SP, passing the token
+	4. The RP verifies the authenticity of the token with IDP or by itself
+	5. The RP then sends back the response to the consumer
+	6. From this point onwards, the consumer must pass the token to the 
+	    RP in each request it makes to the RP
+
+
+JWT
+===
+		Is a standard to pass information in a secured manner
+		between the client and server
+
+Demo
+=====
+	Create 2 controllers:
+		a. AuthenticationController (IDP)
+		b. BooksController (RP/SP)
+			GET	--> get all books
+			POST	--> add a newbook
+			PUT	--> edit a book
+			DELETE	--> delete a book
+
+
+"server=IMCVBCP175-MSL2\SQLEXPRESS2019;database=aspnetwebapidb;integrated security=true;TrustServerCertificate=true";
+
+
+	1. Create a secret (a string)
+	2. The secret is then encoded using SymmetricSecurityKey class
+		Best practice is to store secrets in the cloud
+		For Azure	--> you can use Azure Key Vault
+		For AWS	--> you can use AWS Key Store
+
+	3. Create a digital signature using the secret
+		SigningCredentials	--> with an algorithm
+
+
+
+	Write code inside the IDP app or RP app to verify the token
+
+	a. Install the following NuGet package
+		Microsoft.AspNetCore.Authentication.JwtBearer
+
+	The HTTP request header must be:
+	Authorization	Bearer <<token>>
+  		
+		
+		
+SELF STUDY
+==========
+		Creating/Reading/writing to a file:
+		===================================
+				 // Get access to the current directory
+            DirectoryInfo currDir = new DirectoryInfo(".");
+ 
+            // Get access to a directory with a path
+            DirectoryInfo dereksDir = new DirectoryInfo(@"C:\Users\derekbanas");
+ 
+            // Get the directory path
+            Console.WriteLine(dereksDir.FullName);
+ 
+            // Get the directory name
+            Console.WriteLine(dereksDir.Name);
+ 
+            // Get the parent directory
+            Console.WriteLine(dereksDir.Parent);
+ 
+            // What type is it
+            Console.WriteLine(dereksDir.Attributes);
+ 
+            // When was it created
+            Console.WriteLine(dereksDir.CreationTime);
+ 
+            // Create a directory
+            DirectoryInfo dataDir = new DirectoryInfo(@"C:\Users\derekbanas\C#Data");
+            dataDir.Create();
+			// Delete a directory
+            // Directory.Delete(@"C:\Users\derekbanas\C#Data");
+			
+			 
+            // ----- SIMPLE FILE READING & WRITING -----
+			============================================	
+            // Write a string array to a text file
+            string[] customers =
+            {
+                "Bob Smith",
+                "Sally Smith",
+                "Robert Smith"
+            };
+ 
+            string textFilePath = @"C:\Users\derekbanas\C#Data\testfile1.txt";
+            ;
+            // Write the array
+            File.WriteAllLines(textFilePath,
+                customers);
+ 
+            // Read strings from array
+            foreach (string cust in File.ReadAllLines(textFilePath))
+            {
+                Console.WriteLine($"Customer : {cust}");
+            }
+		
+		
+ // ----- GETTING FILE DATA -----
+ =================================
+            DirectoryInfo myDataDir = new DirectoryInfo(@"C:\Users\derekbanas\C#Data");
+ 
+            // Get all txt files 
+            FileInfo[] txtFiles = myDataDir.GetFiles("*.txt",
+                SearchOption.AllDirectories);
+ 
+            // Number of matches
+            Console.WriteLine("Matches : {0}",
+                txtFiles.Length);
+ 
+            foreach (FileInfo file in txtFiles)
+            {
+                // Get file name
+                Console.WriteLine(file.Name);
+ 
+                // Get bytes in file
+                Console.WriteLine(file.Length);
+            }
+		
+		
+ // ----- FILESTREAMS -----
+ ===========================
+            // FileStream is used to read and write a byte
+            // or an array of bytes. 
+ 
+            string textFilePath2 = @"C:\Users\derekbanas\C#Data\testfile2.txt";
+ 
+            // Create and open a file
+            FileStream fs = File.Open(textFilePath2,
+                FileMode.Create);
+ 
+            string randString = "This is a random string";
+ 
+            // Convert to a byte array
+            byte[] rsByteArray = Encoding.Default.GetBytes(randString);
+ 
+            // Write to file by defining the byte array,
+            // the index to start writing from and length
+            fs.Write(rsByteArray, 0,
+                rsByteArray.Length);
+ 
+            // Move back to the beginning of the file
+            fs.Position = 0;
+ 
+            // Create byte array to hold file data
+            byte[] fileByteArray = new byte[rsByteArray.Length];
+ 
+            // Put bytes in array
+            for(int i = 0; i < rsByteArray.Length; i++)
+            {
+                fileByteArray[i] = (byte)fs.ReadByte();
+            }
+ 
+            // Convert from bytes to string and output
+            Console.WriteLine(Encoding.Default.GetString(fileByteArray));
+ 
+            // Close the FileStream
+            fs.Close();	
+			
+			
+            // ----- STREAMWRITER / STREAMREADER -----
+            // These are best for reading and writing strings
+ 
+            string textFilePath3 = @"C:\Users\derekbanas\C#Data\testfile3.txt";
+ 
+            // Create a text file
+            StreamWriter sw = File.CreateText(textFilePath3);
+ 
+            // Write to a file without a newline
+            sw.Write("This is a random ");
+ 
+            // Write to a file with a newline
+            sw.WriteLine("sentence.");
+ 
+            // Write another
+            sw.WriteLine("This is another sentence.");
+ 
+            // Close the StreamWriter
+            sw.Close();
+ 
+            // Open the file for reading
+            StreamReader sr = File.OpenText(textFilePath3);
+ 
+            // Peek returns the next character as a unicode
+            // number. Use Convert to change to a character
+            Console.WriteLine("Peek : {0}",
+                Convert.ToChar(sr.Peek()));
+ 
+            // Read to a newline
+            Console.WriteLine("1st String : {0}",
+                sr.ReadLine());
+ 
+            // Read to the end of the file starting
+            // where you left off reading
+            Console.WriteLine("Everything : {0}",
+                sr.ReadToEnd());
+ 
+            sr.Close();
+
+// ----- BINARYWRITER / BINARYREADER -----
+===========================================
+            // Used to read and write data types 
+            string textFilePath4 = @"C:\Users\derekbanas\C#Data\testfile4.dat";
+ 
+            // Get the file
+            FileInfo datFile = new FileInfo(textFilePath4);
+ 
+            // Open the file
+            BinaryWriter bw = new BinaryWriter(datFile.OpenWrite());
+ 
+            // Data to save to the file
+            string randText = "Random Text";
+            int myAge = 42;
+            double height = 6.25;
+ 
+            // Write data to a file
+            bw.Write(randText);
+            bw.Write(myAge);
+            bw.Write(height);
+ 
+            bw.Close();
+ 
+            // Open file for reading
+            BinaryReader br = new BinaryReader(datFile.OpenRead());
+ 
+            // Output data
+            Console.WriteLine(br.ReadString());
+            Console.WriteLine(br.ReadInt32());
+            Console.WriteLine(br.ReadDouble());
+ 
+            br.Close();
+ 
+            Console.ReadLine()
+		
+============================================================================		
+SERIALZATION AND DESERIALZATION
+
+
+
+		using System;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+ 
+// With serialization you can store the state 
+// of an object in a file stream, pass it to
+// a remote network
+ 
+namespace CSharpTutA.cs
+{
+    // Defines that you want to serialize this class
+    [Serializable()]
+    public class Animal : ISerializable
+    {
+        public string Name { get; set; }
+        public double Weight { get; set; }
+        public double Height { get; set; }
+        public int AnimalID { get; set; }
+ 
+        public Animal() { }
+ 
+        public Animal(string name = "No Name",
+            double weight = 0,
+            double height = 0)
+        {
+            Name = name;
+            Weight = weight;
+            Height = height;
+        }
+ 
+        public override string ToString()
+        {
+            return string.Format("{0} weighs {1} lbs and is {2} inches tall",
+                Name, Weight, Height);
+        }
+ 
+        // Serialization function (Stores Object Data in File)
+        // SerializationInfo holds the key value pairs
+        // StreamingContext can hold additional info
+        // but we aren't using it here
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            // Assign key value pair for your data
+            info.AddValue("Name", Name);
+            info.AddValue("Weight", Weight);
+            info.AddValue("Height", Height);
+            info.AddValue("AnimalID", AnimalID);
+        }
+ 
+        // The deserialize function (Removes Object Data from File)
+        public Animal(SerializationInfo info, StreamingContext ctxt)
+        {
+            //Get the values from info and assign them to the properties
+            Name = (string)info.GetValue("Name", typeof(string));
+            Weight = (double)info.GetValue("Weight", typeof(double));
+            Height = (double)info.GetValue("Height", typeof(double));
+            AnimalID = (int)info.GetValue("AnimalID", typeof(int));
+        }
+    }
+}
+ 
+// ---------- Program.cs ----------
+ 
+using System;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
+ 
+// Used for writing to a file
+using System.IO;
+ 
+// Used to serialize an object to binary format
+using System.Runtime.Serialization.Formatters.Binary;
+ 
+// Used to serialize into XML
+using System.Xml.Serialization;
+ 
+namespace CSharpTutA.cs
+{
+    class Program
+    {
+        
+        static void Main(string[] args)
+        {
+            Animal bowser = new Animal("Bowser", 45, 25);
+ 
+            // Serialize the object data to a file
+            Stream stream = File.Open("AnimalData.dat", FileMode.Create);
+            BinaryFormatter bf = new BinaryFormatter();
+ 
+            // Send the object data to the file
+            bf.Serialize(stream, bowser);
+            stream.Close();
+ 
+            // Delete the bowser data
+            bowser = null;
+ 
+            // Read object data from the file
+            stream = File.Open("AnimalData.dat", FileMode.Open);
+            bf = new BinaryFormatter();
+ 
+            bowser = (Animal)bf.Deserialize(stream);
+            stream.Close();
+ 
+            Console.WriteLine(bowser.ToString());
+ 
+            // Change bowser to show changes were made
+            bowser.Weight = 50;
+ 
+            // XmlSerializer writes object data as XML
+            XmlSerializer serializer = new XmlSerializer(typeof(Animal));
+            using (TextWriter tw = new StreamWriter(@"C:\Users\derekbanas\C#Data\bowser.xml"))
+            {
+                serializer.Serialize(tw, bowser);
+            }
+ 
+            // Delete bowser data
+            bowser = null;
+ 
+            // Deserialize from XML to the object
+            XmlSerializer deserializer = new XmlSerializer(typeof(Animal));
+            TextReader reader = new StreamReader(@"C:\Users\derekbanas\C#Data\bowser.xml");
+            object obj = deserializer.Deserialize(reader);
+            bowser = (Animal)obj;
+            reader.Close();
+ 
+            Console.WriteLine(bowser.ToString());
+ 
+            // Save a collection of Animals
+            List<Animal> theAnimals = new List<Animal>
+            {
+                new Animal("Mario", 60, 30),
+                new Animal("Luigi", 55, 24),
+                new Animal("Peach", 40, 20)
+            };
+ 
+            using (Stream fs = new FileStream(@"C:\Users\derekbanas\C#Data\animals.xml",
+                FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                XmlSerializer serializer2 = new XmlSerializer(typeof(List<Animal>));
+                serializer2.Serialize(fs, theAnimals);
+            }
+ 
+            // Delete list data
+            theAnimals = null;
+ 
+            // Read data from XML
+            XmlSerializer serializer3 = new XmlSerializer(typeof(List<Animal>));
+ 
+            using (FileStream fs2 = File.OpenRead(@"C:\Users\derekbanas\C#Data\animals.xml"))
+            {
+                theAnimals = (List<Animal>)serializer3.Deserialize(fs2);
+            }
+ 
+ 
+            foreach (Animal a in theAnimals)
+            {
+                Console.WriteLine(a.ToString());
+            }
+ 
+            Console.ReadLine();
+ 
+        }
+    }
+}

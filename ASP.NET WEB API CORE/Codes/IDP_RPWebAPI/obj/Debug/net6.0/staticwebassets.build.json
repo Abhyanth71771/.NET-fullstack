@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Et029Y1i6I40Cdv8pZAqs/2v2cKisNM36FgiVzqVyDo=",
+  "Source": "IDP_RPWebAPI",
+  "BasePath": "_content/IDP_RPWebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

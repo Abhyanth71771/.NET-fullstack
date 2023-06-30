@@ -1,0 +1,200 @@
+DAY-1 14/11/22
+C#
+==
+
+By Microsoft
+
+.net was formerly knows as NGWS(Next gen of windows service)
+Is a full fledged framework
+Supports over 100 languages
+
+cross platform and open source
+
+.net is only for windows and .net core is for all platforms released in 2014 
+
+Xamarin-->Android ad IOS device 
+
+BCL:-Base class library-core set fo api's used to devolop application each platform has its own BCL to devolop an application 
+		BCL->.net
+		Mono BCL-->Xamarin
+		Core BCl->.net Core
+		 and bcl cannot be interchanged each bcl is for its own environment-->solution to this problem is .NET Starndard
+		 
+	.NET Standard->code sharing is possible, write code using .net standard and then run it on xamarin or .net core or .net
+	but still ther were 3 seperate bcl's so ms devoloped .net 6.0 which has all three bcl'seperate
+	.NET 6.0--->Core+xamarin+.net
+	
+	SDk->will contain all the libraries/compiler/bcl etc
+	
+	Blazor->cross platform web UI
+	Windows7-->the ui is done using .net
+	
+	choose a language?(source code)->language compiler(csc.exe/vbc.exe)
+																--execute-->MSIL(MS Intermediate Language) Code(binary code which cannot be understood by any os)
+																			this is language neutral cannot be executed directly should be converted this is paltform independant
+																-->.NEt clr(common language runtime)executes the MSIL(JIT compiler will convert MSIL code to native code) this is not platform independant 
+
+
+.NET CLR
+========
+		.net cannot access the memory directly so pointers ae not used
+		runs Managed clr(code runs usner the supervision of CLR)
+		CLR services:
+			-cross platform integration(cross language same msil)
+			-com interoperability(calling legacy code into your .net)
+			-exception handling
+			-garbage collecting
+			-multi threading
+			-Code access security(micro lvl security cocept)
+			
+ASSEMBLIES IN .NET
+==================
+	smallest unit of deployement
+	can be a .exe or .dll(dynamic linked library)
+	collection of namespaces(similar to module in anglar)
+	assemblies can be shared by multiple files(shared assembly)and the assembly needs to stored in one place and uts called GAC(global assembly cache)
+	if each file has its own assemblie then its caled private assembliy
+	
+	.exe                                     .dll
+1.can be executed independantly					cannot be executed independantly
+2.has an entry point for execution				has  no entry point for execution
+3.each time an exe is launched					dll needs to be pulled into a process to be executed  
+an os process(use up memory) is created
+4.if an exe crashes allt he dll it refers		if a dll crashes the exe in which its executing done not crash
+automatically crash
+
+
+CTS(common type syatem) and ClS(common language specificaion):
+==============================================================
+	CTS:->common way to describe data tpes supportd by all the languages 
+				to make it cross language integration
+				so int in C# shud be understood by Vb also
+				there has to be a set of rules for all languages which is common among them 
+	CTS concentrates only on the type of data and CLs concentrates also on language rules ie:private class members cannot  accessed outside the class
+		
+			
+C#
+===
+
+	-OOP langulage,strongly typed statically typed language,case sensitive
+	-Anders Hejlsberg 2000
+	-C with classes
+	-c# 11 current version-->each version targetted a specific version
+	-professional and enterprise edition paid 
+	-no gui(buttons,test box)
+	-test based output on a terminal/console
+	-project-collection of source code,images which is compiled into an assembly compiled into one exe or dll
+	-extension of C# project is .csproj
+	-each project has a template
+	-A solution is container for one or more projects
+		logical grouping of projects with extension as .sln
+	-create a solution first the add projects into it
+	-multiple languages under one solution
+	 dotnet new console-->console 
+	 
+	 -If there are multiple classes under the same namespace then we have to go to the .csproj file and add a feid with namespace_name.clas_name
+					(<StartupObject>day1.Program1</StartupObject>)
+	-we have to initialize a value to any variable before using it else it will given a error
+	Value types:
+		-each variable will have its own variable and type so if we add x=y then x and y will be deep copy
+
+	Reference Types:
+		can refer same value in stack acts as shallow copy 
+	everything in C# is an object and it is inherited from  System
+			this is done so that it can achive polymorphism
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+29-11-22 ENTITY FRAME WORK CORE
+=====================================================================================================================================================================================
+What?
+	MS official data access platform
+	A cross platform open source ORM(Object Relation Mapper)
+	Wrapper over ADO.NET
+Why?
+	Eliminates the need to write data access code explicitly
+	allows interaction with the backend database using an OO manner/paradigm(insted of connecting to a DB using sql methoods or DO we can use object oriented way to connect to 
+	a database this becomes easy for us to connect and retrive/put data to a DB)
+	allows firing linq querries on .net collections which beind the scenes are translated to the corresponding SQl querries
+	
+what is ORm?
+	A techinique used by devolopers to intract with backend database using object oriented approach (like class,obj,properties)
+	EF core sits between your .net app and underlying backend db
+	
+	
+	.NEt App    =====Ef Core===      Backend DB
+
+In ADO.net we still ned to know SQL as we write the querries in sql as a string byt in Ef we do do that so this is easy compared to ado.net
+
+
+DATABASE WORLD                                               OO WORLD
+table                                                        class
+rows/tuple                                                   object
+feilds/columns                                               properties
+
+EF core supports relational as well as non relational database
+
+in ado.net we have to learn querries for differnt flavours  but in ef core depending on the backend we are going to use we just need to install using NuGet
+
+EF Core:
+	Buisness objects/Domain classes/Entity class
+					is a simple .net class which corresponds to an underlying backed database table
+								a table in sql named x with be a entity class named x and the feilds in the table named x will be properties in the class 
+	DB context
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

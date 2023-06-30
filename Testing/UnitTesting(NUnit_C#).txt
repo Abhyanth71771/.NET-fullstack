@@ -1,0 +1,52 @@
+Unit Test
+=========
+	is a function which calls another function and checks the correctness of the outcome from the claaed function
+	If the outcome is unexpected then the test fails
+	
+SUT
+===
+	System under test is an instance of an object,the units of hich are going to be tested
+
+NUnit
+=====
+	old and powerfull framework
+
+ -install NUnit nuget package
+ install NUnit#testAdapter
+ 
+To test different units write seperate functions
+
+Assert.That(result1, Is.EqualTo(num));-->this is a test case which will return true if its exactly equal  to num else it will return false 
+
+Test Window
+===========
+	Run All:-this is use to build the entire solution and then run all the tests 
+	
+	
+Assertions
+==========
+	Assertion Model->heart of any unit testing framework
+	Assert.That(actual,ResolveConstraint expression)
+MAJOR LOGICAL CONSTAINTS:
+=========================
+	Is
+	Has
+	Does
+2ND lEVEL CONSTAINTS
+====================
+		All-->is.all.contains,has.all
+		Not
+		Some
+	
+[SetUp]
+		this can be added before a methood so that this methood will be called before each tests are executed
+[TearDown]
+		runs after the execution of each tests to destroy objects created
+
+[OneTimeSetUp]/[OneTimeTearDown]
+	runs once for a assembly or a namespace
+	
+Parameterized tests can also be done 
+[TestCaseSource]
+[Category("CAtegory_Name")]-->add this to tests o group then into a category
+

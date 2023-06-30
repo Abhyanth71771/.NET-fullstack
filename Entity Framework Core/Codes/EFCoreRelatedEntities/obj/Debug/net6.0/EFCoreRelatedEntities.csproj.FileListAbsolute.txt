@@ -1,0 +1,5 @@
+C:\Users\AbhyanthP\Desktop\.NET fullstack\Entity Framework Core\Codes\EFCoreRelatedEntities\obj\Debug\net6.0\EFCoreRelatedEntities.csproj.AssemblyReference.cache
+C:\Users\AbhyanthP\Desktop\.NET fullstack\Entity Framework Core\Codes\EFCoreRelatedEntities\obj\Debug\net6.0\EFCoreRelatedEntities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AbhyanthP\Desktop\.NET fullstack\Entity Framework Core\Codes\EFCoreRelatedEntities\obj\Debug\net6.0\EFCoreRelatedEntities.AssemblyInfoInputs.cache
+C:\Users\AbhyanthP\Desktop\.NET fullstack\Entity Framework Core\Codes\EFCoreRelatedEntities\obj\Debug\net6.0\EFCoreRelatedEntities.AssemblyInfo.cs
+C:\Users\AbhyanthP\Desktop\.NET fullstack\Entity Framework Core\Codes\EFCoreRelatedEntities\obj\Debug\net6.0\EFCoreRelatedEntities.csproj.CoreCompileInputs.cache

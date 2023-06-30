@@ -1,0 +1,19 @@
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Sticks\bin\Debug\Sticks.exe.config
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Sticks\bin\Debug\Sticks.exe
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Sticks\bin\Debug\Sticks.pdb
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Sticks\obj\Debug\Sticks.csprojResolveAssemblyReference.cache
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Sticks\obj\Debug\Sticks.exe
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Sticks\obj\Debug\Sticks.pdb
+C:\Users\Илья\documents\visual studio 2017\Projects\UnitTestingCourse\Sticks\bin\Debug\Sticks.Core.dll
+C:\Users\Илья\documents\visual studio 2017\Projects\UnitTestingCourse\Sticks\bin\Debug\Sticks.Core.pdb
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Sticks\bin\Debug\Sticks.exe.config
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Sticks\bin\Debug\Sticks.exe
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Sticks\bin\Debug\Sticks.pdb
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Sticks\bin\Debug\Sticks.Core.dll
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Sticks\bin\Debug\Sticks.Core.pdb
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Sticks\obj\Debug\Sticks.csproj.AssemblyReference.cache
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Sticks\obj\Debug\Sticks.csproj.SuggestedBindingRedirects.cache
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Sticks\obj\Debug\Sticks.csproj.CoreCompileInputs.cache
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Sticks\obj\Debug\Sticks.csproj.CopyComplete
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Sticks\obj\Debug\Sticks.exe
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Sticks\obj\Debug\Sticks.pdb

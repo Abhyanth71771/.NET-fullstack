@@ -1,0 +1,107 @@
+// write your code in TypeScript
+
+import { FormsModule} from '@angular/forms';
+
+import { Component } from '@angular/core';
+
+
+
+class TodoItem {
+
+  isDone: boolean;
+
+  name: string;
+
+}
+@Component({
+
+  selector: 'todo-list',
+
+  template: `
+
+  <input type="text" [(ngModel)]="name">
+
+ 
+
+  <button (click)="add()">Add</button>
+
+  <ol (click)="onclick($event)">
+
+    <li *ngFor="let b of items">{{b}}</li>
+
+  </ol>
+
+  <p class="task-counter">
+
+  {{count}} remaining out of {{items.length}} tasks
+
+  </p>
+
+  `,
+
+  styles: [`
+
+    .is-done {
+
+      text-decoration: line-through;
+
+    }
+
+  `]
+
+})
+
+export class TodoListComponent {
+
+  public name: string = null;
+
+  public items: string[] = [];
+
+  public olval:string=''
+
+  public ans:string=''
+
+  public count:number=0
+public add() {
+
+    this.name=this.name.trim()
+
+    if(this.name!=""){
+
+      this.count++
+
+      this.items.push(this.name)
+
+  }
+
+      this.name=null
+
+  }
+
+public onclick(e:any){
+
+  if(e.srcElement.className!="is-done"){
+
+    this.count--
+
+    e.srcElement.className="is-done"
+
+  }
+
+  else{
+
+    this.count++
+
+    e.srcElement.className=""
+
+  }
+
+}
+
+  public toggleItem(item: TodoItem) {
+
+    item.isDone = !item.isDone;
+
+  }
+
+}

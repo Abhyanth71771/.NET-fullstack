@@ -1,0 +1,69 @@
+1.Lazy loading:
+
+Modulename.ts:
+
+	import { NgModule } from '@angular/core';
+	import { RouterModule, Routes } from '@angular/router';
+
+	const routes: Routes = [];
+
+	@NgModule({
+  	imports: [RouterModule.forChild(routes)],
+  	exports: [RouterModule]
+	})
+	export class Module2RoutingModule { }
+
+app.routes.ts:
+	import { NgModule } from '@angular/core';
+	import { RouterModule, Routes } from '@angular/router';
+
+	const routes: Routes = [];
+
+	let routerconfig=RouterModule.forRoot(routes)
+	export{routerconfig}
+
+Custom pipes
+	import { Pipe, PipeTransform } from '@angular/core';
+
+	@Pipe({
+  	name: 'pipesCheck'
+	})
+	export class PipesCheckPipe implements PipeTransform {
+
+	  transform(value: unknown, ...args: unknown[]): unknown {
+    	return null;
+  	}
+
+	}
+
+HTTP REquests:
+	import { HttpClientModule} from "@angular/common/http"
+
+ngModel:
+	import { FormsModule } from '@angular/forms';
+	add FormsModule in the imports section of app.module.ts
+
+Service:
+	import { Injectable } from '@angular/core';
+
+	@Injectable({
+  	providedIn: 'root'
+	})
+	export class TestService {
+
+	  constructor() { }
+}
+
+Imperative Navigation:
+	import { Router } from '@angular/router';
+	inject into const:private router:Router
+	this.router.navigate(['/search/'+this.textboxvalue]);
+
+
+Activated route import and injection:
+		import {ActivatedRoute} from '@angular/router'
+		private currentroute:ActivatedRoute
+
+
+
+

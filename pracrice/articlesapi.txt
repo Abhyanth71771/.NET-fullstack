@@ -1,0 +1,108 @@
+using System;
+using Microsoft.AspNetCore.Mvc;
+
+namespace simple_rest_api
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class ArticlesController: ControllerBase
+    {
+        private IRepository _repository;
+
+        public ArticlesController(IRepository repository)
+        {
+            // Console.WriteLine("Sample debug output");
+            _repository = repository;
+        }
+
+        [HttpPost]
+        public IActionResult Create(Article a)
+        {
+            if(string.IsNullOrEmpty(a.Title))
+            {
+                return BadRequest();
+            }
+            
+            Article newarticle = new Article();
+            
+            Guid id = this._repository.Create(a);
+            newarticle.Id = id;
+            newarticle.Title = a.Title;
+            newarticle.Text = a.Text;
+            string location = "/api/articles/" +id.ToString();
+            return Created(location, newarticle);
+        }
+
+        [HttpDelete]
+        [Route("{articleid}")]
+        public IActionResult Delete(string articleid)
+        {
+            bool result = this._repository.Delete(new Guid(articleid));
+            if(result == false)
+            {
+                return NotFound("Article not found");
+            }
+            return Ok();
+        }
+
+        [HttpPut]
+        [Route("{articleid}")]
+        public IActionResult Update(string articleid, Article a)
+        {
+            bool result = false;
+            if(string.IsNullOrEmpty(a.Title))
+            {
+                return BadRequest();
+            }
+            Article x = this._repository.Get(new Guid(articleid));
+            if(x == null)
+            {
+                return NotFound("Article not found");
+            }
+            
+            x.Title = a.Title;
+            x.Text = a.Text;
+            this._repository.Update(x);
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("{articleid}")]
+        public IActionResult Get(string articleid)
+        {
+            Article a = this._repository.Get(new Guid(articleid));
+            if(a == null)
+            {
+                return NotFound("Article not found");
+            }
+            return Ok(a);
+        }
+    }
+}
+
+/*
+public interface IRepository
+{
+    // Returns a found article or null.
+    Article Get(Guid id);
+    // Creates a new article and returns its identifier.
+    // Throws an exception if a article is null.
+    // Throws an exception if a title is null or empty.
+    Guid Create(Article article);
+    // Returns true if an article was deleted or false if it was not possible to find it.
+    bool Delete(Guid id);
+    // Returns true if an article was updated or false if it was not possible to find it.
+    // Throws an exception if an articleToUpdate is null.
+    // Throws an exception or if a title is null or empty.
+    bool Update(Article articleToUpdate);
+}
+*/
+
+/*
+public class Article
+{
+    public Guid Id { get; set; }
+    public string Title { get; set; }
+    public string Text { get; set; }
+}
+*/

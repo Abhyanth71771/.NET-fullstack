@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\IDP_RPWebAPI.props" />
+</Project>

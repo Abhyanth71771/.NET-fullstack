@@ -1,0 +1,24 @@
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Business.Tests\bin\Debug\Business.Tests.dll
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Business.Tests\bin\Debug\Business.Tests.pdb
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Business.Tests\bin\Debug\nunit.framework.dll
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Business.Tests\bin\Debug\UnitTestingCourse.dll
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Business.Tests\bin\Debug\UnitTestingCourse.pdb
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Business.Tests\bin\Debug\nunit.framework.xml
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Business.Tests\obj\Debug\Business.Tests.csprojResolveAssemblyReference.cache
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Business.Tests\obj\Debug\Business.Tests.dll
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Business.Tests\obj\Debug\Business.Tests.pdb
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Business.Tests\bin\Debug\NSubstitute.dll
+C:\Users\Илья\Documents\Visual Studio 2017\Projects\UnitTestingCourse\Business.Tests\bin\Debug\NSubstitute.xml
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Business.Tests\bin\Debug\Business.Tests.dll
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Business.Tests\bin\Debug\Business.Tests.pdb
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Business.Tests\bin\Debug\NSubstitute.dll
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Business.Tests\bin\Debug\nunit.framework.dll
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Business.Tests\bin\Debug\UnitTestingCourse.dll
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Business.Tests\bin\Debug\UnitTestingCourse.pdb
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Business.Tests\bin\Debug\NSubstitute.xml
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Business.Tests\bin\Debug\nunit.framework.xml
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Business.Tests\obj\Debug\Business.Tests.csproj.AssemblyReference.cache
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Business.Tests\obj\Debug\Business.Tests.csproj.CoreCompileInputs.cache
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Business.Tests\obj\Debug\Business.Tests.csproj.CopyComplete
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Business.Tests\obj\Debug\Business.Tests.dll
+C:\Users\AbhyanthP\Desktop\UnitTestingCourse\Business.Tests\obj\Debug\Business.Tests.pdb

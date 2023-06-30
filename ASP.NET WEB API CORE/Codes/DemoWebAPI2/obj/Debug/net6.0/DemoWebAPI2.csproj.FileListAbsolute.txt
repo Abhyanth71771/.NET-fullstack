@@ -1,0 +1,64 @@
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\bin\Debug\net6.0\appsettings.json
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\bin\Debug\net6.0\DemoWebAPI2.exe
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\bin\Debug\net6.0\DemoWebAPI2.deps.json
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\bin\Debug\net6.0\DemoWebAPI2.runtimeconfig.json
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\bin\Debug\net6.0\DemoWebAPI2.dll
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\bin\Debug\net6.0\DemoWebAPI2.pdb
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\DemoWebAPI2.csproj.AssemblyReference.cache
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\DemoWebAPI2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\DemoWebAPI2.AssemblyInfoInputs.cache
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\DemoWebAPI2.AssemblyInfo.cs
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\DemoWebAPI2.csproj.CoreCompileInputs.cache
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\DemoWebAPI2.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\DemoWebAPI2.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\staticwebassets\msbuild.DemoWebAPI2.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\staticwebassets\msbuild.build.DemoWebAPI2.props
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.DemoWebAPI2.props
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.DemoWebAPI2.props
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\scopedcss\bundle\DemoWebAPI2.styles.css
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\DemoWebAPI2.csproj.CopyComplete
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\DemoWebAPI2.dll
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\refint\DemoWebAPI2.dll
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\DemoWebAPI2.pdb
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\DemoWebAPI2.genruntimeconfig.cache
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\ref\DemoWebAPI2.dll
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\bin\Debug\net6.0\appsettings.json
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\bin\Debug\net6.0\DemoWebAPI2.exe
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\bin\Debug\net6.0\DemoWebAPI2.deps.json
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\bin\Debug\net6.0\DemoWebAPI2.runtimeconfig.json
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\bin\Debug\net6.0\DemoWebAPI2.dll
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\bin\Debug\net6.0\DemoWebAPI2.pdb
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\DemoWebAPI2.csproj.AssemblyReference.cache
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\DemoWebAPI2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\DemoWebAPI2.AssemblyInfoInputs.cache
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\DemoWebAPI2.AssemblyInfo.cs
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\DemoWebAPI2.csproj.CoreCompileInputs.cache
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\DemoWebAPI2.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\DemoWebAPI2.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\staticwebassets\msbuild.DemoWebAPI2.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\staticwebassets\msbuild.build.DemoWebAPI2.props
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.DemoWebAPI2.props
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.DemoWebAPI2.props
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\scopedcss\bundle\DemoWebAPI2.styles.css
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\DemoWebAPI2.csproj.CopyComplete
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\DemoWebAPI2.dll
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\refint\DemoWebAPI2.dll
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\DemoWebAPI2.pdb
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\DemoWebAPI2.genruntimeconfig.cache
+C:\Users\AbhyanthP\Desktop\.NET fullstack\ASP.NET WEB API CORE\Codes\DemoWebAPI2\obj\Debug\net6.0\ref\DemoWebAPI2.dll

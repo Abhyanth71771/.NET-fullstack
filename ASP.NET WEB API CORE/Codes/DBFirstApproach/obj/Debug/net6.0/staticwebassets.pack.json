@@ -1,0 +1,49 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\AbhyanthP\\Desktop\\.NET fullstack\\ASP.NET WEB API CORE\\Codes\\DBFirstApproach\\wwwroot\\3rdpartylicenses.txt",
+      "PackagePath": "staticwebassets\\3rdpartylicenses.txt"
+    },
+    {
+      "Id": "C:\\Users\\AbhyanthP\\Desktop\\.NET fullstack\\ASP.NET WEB API CORE\\Codes\\DBFirstApproach\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\AbhyanthP\\Desktop\\.NET fullstack\\ASP.NET WEB API CORE\\Codes\\DBFirstApproach\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\AbhyanthP\\Desktop\\.NET fullstack\\ASP.NET WEB API CORE\\Codes\\DBFirstApproach\\wwwroot\\main.b0aee30f0dd523a8.js",
+      "PackagePath": "staticwebassets\\main.b0aee30f0dd523a8.js"
+    },
+    {
+      "Id": "C:\\Users\\AbhyanthP\\Desktop\\.NET fullstack\\ASP.NET WEB API CORE\\Codes\\DBFirstApproach\\wwwroot\\polyfills.e018c2655c5fecfa.js",
+      "PackagePath": "staticwebassets\\polyfills.e018c2655c5fecfa.js"
+    },
+    {
+      "Id": "C:\\Users\\AbhyanthP\\Desktop\\.NET fullstack\\ASP.NET WEB API CORE\\Codes\\DBFirstApproach\\wwwroot\\runtime.e471162dbca9980e.js",
+      "PackagePath": "staticwebassets\\runtime.e471162dbca9980e.js"
+    },
+    {
+      "Id": "C:\\Users\\AbhyanthP\\Desktop\\.NET fullstack\\ASP.NET WEB API CORE\\Codes\\DBFirstApproach\\wwwroot\\styles.ef46db3751d8e999.css",
+      "PackagePath": "staticwebassets\\styles.ef46db3751d8e999.css"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.DBFirstApproach.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.DBFirstApproach.props",
+      "PackagePath": "build\\DBFirstApproach.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.DBFirstApproach.props",
+      "PackagePath": "buildMultiTargeting\\DBFirstApproach.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.DBFirstApproach.props",
+      "PackagePath": "buildTransitive\\DBFirstApproach.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
